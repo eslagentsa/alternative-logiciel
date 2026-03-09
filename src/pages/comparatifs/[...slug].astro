@@ -20,23 +20,26 @@ const { title, description, publishDate, lastUpdated, author, category, mainSoft
 ---
 
 <Layout title={`${title} - Alternative Logiciel`} description={description}>
-  <article class="pt-24 pb-16 px-4">
-    <div class="max-w-5xl mx-auto">
+  <article class="pt-28 pb-24 px-4">
+    <div class="max-w-6xl mx-auto">
+      
       {/* Header */}
-      <header class="mb-16 text-center">
-        <div class="flex items-center justify-center gap-2 mb-6">
-          <a href="/comparatifs" class="text-sm text-purple-400 hover:text-purple-300 transition-colors">← Retour aux comparatifs</a>
+      <header class="mb-24 text-center">
+        <div class="mb-8">
+          <a href="/comparatifs" class="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition-colors text-lg">
+            <i class="fas fa-arrow-left"></i> Retour aux comparatifs
+          </a>
         </div>
         
-        <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-purple-500/10 text-purple-400 mb-6">
+        <span class="inline-flex items-center px-5 py-2.5 rounded-full text-base font-medium bg-purple-500/10 text-purple-400 mb-8">
           {category}
         </span>
         
-        <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">{title}</h1>
+        <h1 class="text-5xl md:text-6xl font-bold mb-8 leading-tight">{title}</h1>
         
-        <p class="text-xl text-[var(--color-text-secondary)] mb-8 max-w-3xl mx-auto leading-relaxed">{description}</p>
+        <p class="text-2xl text-[var(--color-text-secondary)] mb-10 max-w-4xl mx-auto leading-relaxed">{description}</p>
         
-        <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-[var(--color-text-muted)]">
+        <div class="flex flex-wrap items-center justify-center gap-8 text-base text-[var(--color-text-muted)]">
           <span class="flex items-center gap-2"><i class="fas fa-user text-purple-400"></i> {author}</span>
           <span class="flex items-center gap-2"><i class="fas fa-calendar text-purple-400"></i> {publishDate.toLocaleDateString('fr-FR')}</span>
           {lastUpdated && lastUpdated.getTime() !== publishDate.getTime() && (
@@ -47,129 +50,125 @@ const { title, description, publishDate, lastUpdated, author, category, mainSoft
 
       {/* Logiciel principal */}
       {mainSoftware && (
-        <section class="mb-20">
-          <div class="flex items-center gap-3 mb-8">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center">
-              <i class="fas fa-crown text-white text-xl"></i>
+        <section class="mb-32">
+          <div class="flex items-center gap-4 mb-10">
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center shadow-lg shadow-purple-500/25">
+              <i class="fas fa-crown text-white text-2xl"></i>
             </div>
-            <h2 class="text-3xl font-bold">Logiciel de référence</h2>
+            <h2 class="text-4xl font-bold">Logiciel de référence</h2>
           </div>
           
-          <div class="glass-card p-10 rounded-2xl">
-            <div class="flex flex-col lg:flex-row lg:items-start gap-8">
-              <div class="flex-1">
-                <h3 class="text-3xl font-bold mb-4 text-purple-400">{mainSoftware.name}</h3>
-                <p class="text-lg text-[var(--color-text-secondary)] mb-6 leading-relaxed">{mainSoftware.description}</p>
-                
-                <div class="flex flex-wrap items-center gap-6 mb-8">
-                  <span class="text-2xl font-bold text-white bg-purple-600 px-4 py-2 rounded-xl">{mainSoftware.price}</span>
-                  <span class="flex items-center gap-2 text-xl text-yellow-400">
-                    <i class="fas fa-star"></i>
-                    <span class="font-bold">{mainSoftware.rating}</span>
-                    <span class="text-[var(--color-text-muted)] text-base">/5</span>
-                  </span>
-                  <a href={mainSoftware.website} target="_blank" rel="noopener" 
-                     class="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-bg-tertiary)] rounded-xl text-purple-400 hover:text-purple-300 hover:bg-purple-600/20 transition-all">
-                    Site officiel <i class="fas fa-external-link-alt"></i>
-                  </a>
-                </div>
+          <div class="bg-gradient-to-br from-[var(--color-bg-secondary)] to-[var(--color-bg-tertiary)] border border-[var(--color-border)] p-12 rounded-3xl shadow-2xl">
+            <h3 class="text-4xl font-bold mb-6 text-purple-400">{mainSoftware.name}</h3>
+            
+            <p class="text-xl text-[var(--color-text-secondary)] mb-10 leading-relaxed max-w-4xl">{mainSoftware.description}</p>
+            
+            <div class="flex flex-wrap items-center gap-8 mb-12">
+              <span class="text-3xl font-bold text-white bg-purple-600 px-6 py-3 rounded-2xl shadow-lg shadow-purple-600/25">{mainSoftware.price}</span>
+              <span class="flex items-center gap-3 text-2xl text-yellow-400">
+                <i class="fas fa-star text-3xl"></i>
+                <span class="font-bold">{mainSoftware.rating}</span>
+                <span class="text-[var(--color-text-muted)] text-xl">/5</span>
+              </span>
+              <a href={mainSoftware.website} target="_blank" rel="noopener" 
+                 class="inline-flex items-center gap-3 px-8 py-4 bg-[var(--color-bg-primary)] border border-[var(--color-border)] rounded-2xl text-purple-400 hover:text-purple-300 hover:border-purple-400 transition-all text-lg">
+                Site officiel <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
 
-                <div class="grid md:grid-cols-2 gap-8">
-                  <div class="bg-green-500/10 rounded-xl p-6">
-                    <h4 class="font-bold mb-4 text-green-400 text-lg flex items-center gap-2">
-                      <i class="fas fa-check-circle"></i> Avantages
-                    </h4>
-                    <ul class="space-y-3">
-                      {mainSoftware.pros.map(pro => (
-                        <li class="flex items-start gap-3 text-[var(--color-text-secondary)]">
-                          <span class="text-green-400 mt-1">✓</span>
-                          <span>{pro}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div class="bg-red-500/10 rounded-xl p-6">
-                    <h4 class="font-bold mb-4 text-red-400 text-lg flex items-center gap-2">
-                      <i class="fas fa-times-circle"></i> Inconvénients
-                    </h4>
-                    <ul class="space-y-3">
-                      {mainSoftware.cons.map(con => (
-                        <li class="flex items-start gap-3 text-[var(--color-text-secondary)]">
-                          <span class="text-red-400 mt-1">×</span>
-                          <span>{con}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+            <div class="grid md:grid-cols-2 gap-10">
+              <div class="bg-green-500/5 border border-green-500/20 rounded-2xl p-8">
+                <h4 class="font-bold mb-6 text-green-400 text-xl flex items-center gap-3">
+                  <i class="fas fa-check-circle text-2xl"></i> Avantages
+                </h4>
+                <ul class="space-y-4">
+                  {mainSoftware.pros.map(pro => (
+                    <li class="flex items-start gap-4 text-[var(--color-text-secondary)] text-lg leading-relaxed">
+                      <span class="flex-shrink-0 w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 text-sm">✓</span>
+                      <span>{pro}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div class="bg-red-500/5 border border-red-500/20 rounded-2xl p-8">
+                <h4 class="font-bold mb-6 text-red-400 text-xl flex items-center gap-3">
+                  <i class="fas fa-times-circle text-2xl"></i> Inconvénients
+                </h4>
+                <ul class="space-y-4">
+                  {mainSoftware.cons.map(con => (
+                    <li class="flex items-start gap-4 text-[var(--color-text-secondary)] text-lg leading-relaxed">
+                      <span class="flex-shrink-0 w-8 h-8 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 text-sm">×</span>
+                      <span>{con}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
         </section>
       )}
 
-      {/* Compteur d'alternatives */}
-      <div class="flex items-center justify-between mb-12">
+      {/* Séparateur */}
+      <div class="flex items-center gap-6 mb-16">
+        <div class="flex-1 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent"></div>
         <div class="flex items-center gap-4">
-          <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500/20 to-blue-500/20 flex items-center justify-center">
-            <span class="text-2xl font-bold text-purple-400">{alternatives.length}</span>
+          <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center shadow-lg shadow-purple-500/25">
+            <span class="text-2xl font-bold text-white">{alternatives.length}</span>
           </div>
           <div>
-            <h2 class="text-3xl font-bold">Alternatives</h2>
-            <p class="text-[var(--color-text-muted)]">Testées et comparées</p>
+            <h2 class="text-4xl font-bold">Alternatives</h2>
+            <p class="text-[var(--color-text-muted)] text-lg mt-1">Testées et comparées pour vous</p>
           </div>
         </div>
-        <span class="text-sm text-[var(--color-text-muted)] bg-[var(--color-bg-tertiary)] px-4 py-2 rounded-full">
-          Classées par pertinence
-        </span>
+        <div class="flex-1 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent"></div>
       </div>
 
       {/* Liste des alternatives */}
-      <div class="space-y-10 mb-20">
+      <div class="space-y-16 mb-32">
         {alternatives.map((alt, index) => (
-          <div class="glass-card rounded-2xl overflow-hidden">
+          <div class="bg-gradient-to-br from-[var(--color-bg-secondary)] to-[var(--color-bg-tertiary)] border border-[var(--color-border)] rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow">
             {/* Header de l'alternative */}
-            <div class="p-8 border-b border-[var(--color-border)]">
-              <div class="flex flex-col lg:flex-row lg:items-start gap-6">
+            <div class="p-10 md:p-12 border-b border-[var(--color-border)]">
+              <div class="flex flex-col lg:flex-row lg:items-start gap-8">
                 {/* Numéro */}
                 <div class="flex-shrink-0">
-                  <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-2xl font-bold text-white">
+                  <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-3xl font-bold text-white shadow-lg shadow-purple-500/25">
                     #{index + 1}
                   </div>
                 </div>
                 
                 <div class="flex-1">
                   {/* Titre et badges */}
-                  <div class="flex flex-wrap items-center gap-4 mb-4">
-                    <h3 class="text-2xl font-bold">{alt.name}</h3>
+                  <div class="flex flex-wrap items-center gap-4 mb-6">
+                    <h3 class="text-3xl font-bold">{alt.name}</h3>
                     {alt.openSource && (
-                      <span class="px-3 py-1 rounded-full text-sm bg-green-500/20 text-green-400 font-medium">
-                        <i class="fas fa-code-branch mr-1"></i> Open Source
+                      <span class="px-4 py-2 rounded-full text-base bg-green-500/20 text-green-400 font-medium border border-green-500/30">
+                        <i class="fas fa-code-branch mr-2"></i> Open Source
                       </span>
                     )}
                   </div>
                   
-                  <p class="text-lg text-[var(--color-text-secondary)] mb-6 leading-relaxed">{alt.description}</p>
+                  <p class="text-xl text-[var(--color-text-secondary)] mb-8 leading-relaxed max-w-4xl">{alt.description}</p>
                   
                   {/* Prix et note */}
-                  <div class="flex flex-wrap items-center gap-6 mb-6">
-                    <span class="text-xl font-bold text-purple-400">{alt.price}</span>
-                    <span class="flex items-center gap-2 text-lg">
-                      <i class="fas fa-star text-yellow-400"></i>
+                  <div class="flex flex-wrap items-center gap-8 mb-8">
+                    <span class="text-2xl font-bold text-purple-400">{alt.price}</span>
+                    <span class="flex items-center gap-3 text-xl">
+                      <i class="fas fa-star text-yellow-400 text-2xl"></i>
                       <span class="font-bold">{alt.rating}</span>
                       <span class="text-[var(--color-text-muted)]">/5</span>
                     </span>
                     <a href={alt.website} target="_blank" rel="noopener" 
-                       class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--color-bg-tertiary)] text-purple-400 hover:text-purple-300 hover:bg-purple-600/20 transition-all">
-                      Site officiel <i class="fas fa-external-link-alt text-sm"></i>
+                       class="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-[var(--color-bg-primary)] border border-[var(--color-border)] text-purple-400 hover:text-purple-300 hover:border-purple-400 transition-all">
+                      Site officiel <i class="fas fa-external-link-alt"></i>
                     </a>
                   </div>
 
                   {/* Best for */}
                   {alt.bestFor && (
-                    <div class="flex items-start gap-3 p-4 bg-blue-500/10 rounded-xl">
-                      <i class="fas fa-user-check text-blue-400 mt-1"></i>
-                      <div>
+                    <div class="flex items-start gap-4 p-6 bg-blue-500/5 border border-blue-500/20 rounded-2xl">
+                      <i class="fas fa-user-check text-blue-400 text-xl mt-1"></i>
+                      <div class="text-lg">
                         <span class="font-semibold text-blue-400">Idéal pour :</span>
                         <span class="text-[var(--color-text-secondary)] ml-2">{alt.bestFor}</span>
                       </div>
@@ -180,29 +179,29 @@ const { title, description, publishDate, lastUpdated, author, category, mainSoft
             </div>
 
             {/* Pros et Cons */}
-            <div class="p-8">
-              <div class="grid md:grid-cols-2 gap-8">
+            <div class="p-10 md:p-12">
+              <div class="grid md:grid-cols-2 gap-12">
                 <div>
-                  <h4 class="font-bold mb-5 text-green-400 text-lg flex items-center gap-2">
-                    <i class="fas fa-thumbs-up"></i> Points forts
+                  <h4 class="font-bold mb-8 text-green-400 text-2xl flex items-center gap-3">
+                    <i class="fas fa-thumbs-up text-3xl"></i> Points forts
                   </h4>
-                  <ul class="space-y-4">
+                  <ul class="space-y-6">
                     {alt.pros.map(pro => (
-                      <li class="flex items-start gap-3 text-[var(--color-text-secondary)] leading-relaxed">
-                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 text-sm">✓</span>
+                      <li class="flex items-start gap-4 text-[var(--color-text-secondary)] text-lg leading-relaxed">
+                        <span class="flex-shrink-0 w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 font-bold">✓</span>
                         <span>{pro}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
                 <div>
-                  <h4 class="font-bold mb-5 text-red-400 text-lg flex items-center gap-2">
-                    <i class="fas fa-thumbs-down"></i> Points faibles
+                  <h4 class="font-bold mb-8 text-red-400 text-2xl flex items-center gap-3">
+                    <i class="fas fa-thumbs-down text-3xl"></i> Points faibles
                   </h4>
-                  <ul class="space-y-4">
+                  <ul class="space-y-6">
                     {alt.cons.map(con => (
-                      <li class="flex items-start gap-3 text-[var(--color-text-secondary)] leading-relaxed">
-                        <span class="flex-shrink-0 w-6 h-6 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 text-sm">×</span>
+                      <li class="flex items-start gap-4 text-[var(--color-text-secondary)] text-lg leading-relaxed">
+                        <span class="flex-shrink-0 w-10 h-10 rounded-full bg-red-500/20 flex items-center justify-center text-red-400 font-bold">×</span>
                         <span>{con}</span>
                       </li>
                     ))}
@@ -215,19 +214,19 @@ const { title, description, publishDate, lastUpdated, author, category, mainSoft
       </div>
 
       {/* Contenu Markdown */}
-      <div class="prose prose-invert prose-xl max-w-none">
+      <div class="prose prose-invert prose-2xl max-w-none">
         <Content />
       </div>
 
       {/* CTA */}
-      <div class="mt-20 glass-card p-12 rounded-2xl text-center">
-        <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center mx-auto mb-6">
-          <i class="fas fa-question text-white text-2xl"></i>
+      <div class="mt-32 bg-gradient-to-br from-[var(--color-bg-secondary)] to-[var(--color-bg-tertiary)] border border-[var(--color-border)] p-16 rounded-3xl text-center shadow-2xl">
+        <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center mx-auto mb-8 shadow-lg shadow-purple-500/25">
+          <i class="fas fa-question text-white text-3xl"></i>
         </div>
-        <h3 class="text-2xl font-bold mb-4">Une question sur ces alternatives ?</h3>
-        <p class="text-[var(--color-text-secondary)] mb-8 text-lg max-w-2xl mx-auto">Notre équipe peut vous aider à choisir la meilleure solution pour vos besoins spécifiques.</p>
+        <h3 class="text-3xl font-bold mb-6">Une question sur ces alternatives ?</h3>
+        <p class="text-xl text-[var(--color-text-secondary)] mb-10 max-w-2xl mx-auto leading-relaxed">Notre équipe peut vous aider à choisir la meilleure solution pour vos besoins spécifiques.</p>
         <a href="mailto:esl.agentsa@gmail.com" 
-           class="inline-flex items-center gap-3 px-8 py-4 bg-purple-600 text-white rounded-xl hover:bg-purple-500 transition-all text-lg font-medium">
+           class="inline-flex items-center gap-4 px-10 py-5 bg-purple-600 text-white rounded-2xl hover:bg-purple-500 transition-all text-xl font-medium shadow-lg shadow-purple-600/25">
           <i class="fas fa-envelope"></i> Nous contacter
         </a>
       </div>
@@ -241,48 +240,48 @@ const { title, description, publishDate, lastUpdated, author, category, mainSoft
   }
   .prose h2 {
     color: var(--color-text-primary);
-    margin-top: 4rem;
-    margin-bottom: 1.5rem;
-    font-size: 2rem;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
     font-weight: 700;
   }
   .prose h3 {
     color: var(--color-text-primary);
-    margin-top: 3rem;
-    margin-bottom: 1.25rem;
-    font-size: 1.5rem;
+    margin-top: 4rem;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
     font-weight: 600;
   }
   .prose p {
     color: var(--color-text-secondary);
-    margin-bottom: 1.5rem;
-    line-height: 1.8;
-    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    line-height: 2;
+    font-size: 1.25rem;
   }
   .prose ul {
     color: var(--color-text-secondary);
-    margin-bottom: 2rem;
-    margin-left: 1.5rem;
+    margin-bottom: 2.5rem;
+    margin-left: 2rem;
   }
   .prose ul li {
-    margin-bottom: 0.75rem;
-    line-height: 1.7;
+    margin-bottom: 1rem;
+    line-height: 1.8;
   }
   .prose table {
     width: 100%;
     border-collapse: collapse;
-    margin: 2.5rem 0;
-    font-size: 1rem;
+    margin: 3rem 0;
+    font-size: 1.125rem;
   }
   .prose th {
     background: var(--color-bg-tertiary);
-    padding: 1rem;
+    padding: 1.25rem;
     text-align: left;
     font-weight: 600;
     border-bottom: 2px solid var(--color-border);
   }
   .prose td {
-    padding: 1rem;
+    padding: 1.25rem;
     border-bottom: 1px solid var(--color-border);
   }
   .prose tr:hover {
@@ -293,8 +292,8 @@ const { title, description, publishDate, lastUpdated, author, category, mainSoft
   }
   .prose blockquote {
     border-left: 4px solid var(--color-primary-500);
-    padding-left: 1.5rem;
-    margin: 2rem 0;
+    padding-left: 2rem;
+    margin: 2.5rem 0;
     font-style: italic;
     color: var(--color-text-secondary);
   }
