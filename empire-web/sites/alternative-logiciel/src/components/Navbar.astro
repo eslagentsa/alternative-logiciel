@@ -1,0 +1,174 @@
+---
+import { Menu, X, Moon, Sun, Search } from 'lucide-react';
+import { categories } from '../data/categories';
+
+const navLinks = [
+  { href: '/', label: 'Accueil' },
+  { href: '/categories', label: 'Catégories' },
+  { href: '/comparatifs', label: 'Comparatifs' },
+  { href: '/about', label: 'À propos' },
+  { href: '/contact', label: 'Contact' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 glass-nav">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+      <!-- Logo -->
+      <a href="/" class="flex items-center space-x-3 group" transition:name="logo">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300">
+          <span class="text-white font-bold text-lg">AL</span>
+        </div>
+        <span class="font-bold text-xl hidden sm:block gradient-text">
+          Alternative Logiciel
+        </span>
+      </a>
+      
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center space-x-1">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class:list={[
+              'px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 animated-underline',
+              currentPath === link.href
+                ? 'text-primary-400 bg-primary-500/10'
+                : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-bg-tertiary)]',
+            ]}
+          >
+            {link.label}
+          </a>
+        ))}
+        
+        <!-- Categories Dropdown -->
+        <div class="relative group">
+          <button class="px-4 py-2 rounded-lg text-sm font-medium text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-bg-tertiary)] transition-all duration-300 flex items-center space-x-1">
+            <span>Catégories</span>
+            <svg class="w-4 h-4 transform group-hover:rotate-180 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          
+          <div class="absolute top-full left-0 mt-2 w-64 glass rounded-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top">
+            <div class="p-4 space-y-2">
+              {categories.slice(0, 6).map((cat) => (
+                <a
+                  href={`/categories/${cat.slug}`}
+                  class="flex items-center space-x-3 p-3 rounded-xl hover:bg-primary-500/10 transition-colors duration-200"
+                >
+                  <div class={`w-10 h-10 rounded-lg bg-${cat.color}-500/20 flex items-center justify-center`}>
+                    <span class={`text-${cat.color}-400`}>
+                      <cat.icon size={20} />
+                    </span>
+                  </div>
+                  <div>
+                    <p class="font-medium text-sm text-[var(--color-text-primary)]">{cat.name}</p>
+                    <p class="text-xs text-[var(--color-text-muted)]">{cat.count} comparatifs</p>
+                  </div>
+                </a>
+              ))}
+              <a href="/categories" class="block text-center text-sm text-primary-400 hover:text-primary-300 pt-2 border-t border-[var(--color-border)]">
+                Voir toutes les catégories →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Right Actions -->
+      <div class="flex items-center space-x-2">
+        <!-- Search Button -->
+        <button 
+          class="p-2 rounded-xl text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-bg-tertiary)] transition-all duration-300"
+          aria-label="Rechercher"
+        >
+          <Search size={20} />
+        </button>
+        
+        <!-- Theme Toggle -->
+        <button
+          data-theme-toggle
+          class="p-2 rounded-xl text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-bg-tertiary)] transition-all duration-300"
+          aria-label="Changer de thème"
+        >
+          <span class="dark:hidden">
+            <Moon size={20} />
+          </span>
+          <span class="hidden dark:block">
+            <Sun size={20} />
+          </span>
+        </button>
+        
+        <!-- Mobile Menu Button -->
+        <button
+          id="mobile-menu-btn"
+          class="lg:hidden p-2 rounded-xl text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-bg-tertiary)] transition-all duration-300"
+          aria-label="Menu"
+        >
+          <Menu size={24} class="menu-open" />
+          <X size={24} class="menu-close hidden" />
+        </button>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="lg:hidden hidden glass border-t border-[var(--color-border)]">
+    <div class="px-4 py-4 space-y-2">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            'block px-4 py-3 rounded-xl text-base font-medium transition-all duration-200',
+            currentPath === link.href
+              ? 'text-primary-400 bg-primary-500/10'
+              : 'text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-bg-tertiary)]',
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+      
+      <div class="pt-4 border-t border-[var(--color-border)]">
+        <p class="px-4 text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider mb-3">
+          Catégories populaires
+        </p>
+        {categories.slice(0, 4).map((cat) => (
+          <a
+            href={`/categories/${cat.slug}`}
+            class="flex items-center space-x-3 px-4 py-3 rounded-xl hover:bg-[var(--color-bg-tertiary)] transition-colors duration-200"
+          >
+            <span class={`text-${cat.color}-400`}>
+              <cat.icon size={18} />
+            </span>
+            <span class="text-[var(--color-text-secondary)]">{cat.name}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuOpen = mobileMenuBtn?.querySelector('.menu-open');
+  const menuClose = mobileMenuBtn?.querySelector('.menu-close');
+  
+  mobileMenuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+    menuOpen?.classList.toggle('hidden');
+    menuClose?.classList.toggle('hidden');
+  });
+  
+  // Close mobile menu when clicking on a link
+  mobileMenu?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      menuOpen?.classList.remove('hidden');
+      menuClose?.classList.add('hidden');
+    });
+  });
+</script>
