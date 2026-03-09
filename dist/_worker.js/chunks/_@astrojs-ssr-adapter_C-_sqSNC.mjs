@@ -1,10 +1,10 @@
 globalThis.process ??= {}; globalThis.process.env ??= {};
-import { f as fileExtension, j as joinPaths, s as slash, p as prependForwardSlash, r as removeTrailingForwardSlash, a as appendForwardSlash, b as isInternalPath, c as collapseDuplicateTrailingSlashes, h as hasFileExtension } from './path_CH3auf61.mjs';
+import { f as fileExtension, j as joinPaths, s as slash, p as prependForwardSlash, a as removeTrailingForwardSlash, b as appendForwardSlash, c as isInternalPath, d as collapseDuplicateTrailingSlashes, h as hasFileExtension } from './path_BgNISshD.mjs';
 import { m as matchPattern } from './remote_CrdlObHx.mjs';
-import { r as requestIs404Or500, i as isRequestServerIsland, n as notFound, a as normalizeTheLocale, b as redirectToFallback, c as redirectToDefaultLocale, d as requestHasLocale, e as defineMiddleware, S as SERVER_ISLAND_COMPONENT, f as SERVER_ISLAND_ROUTE, g as createEndpoint, R as RouteCache, s as sequence, h as findRouteToRewrite, v as validateAndDecodePathname, m as matchRoute, j as RenderContext, P as PERSIST_SYMBOL, k as getSetCookiesFromResponse } from './index_b-5Mm7Pn.mjs';
-import { w as ROUTE_TYPE_HEADER, x as REROUTE_DIRECTIVE_HEADER, D as DEFAULT_404_COMPONENT, A as AstroError, y as ActionNotFoundError, z as s, B as clientAddressSymbol, C as LocalsNotAnObject, G as FailedToFindPageMapSSR, H as REROUTABLE_STATUS_CODES, J as responseSentSymbol } from './astro/server_BtOBAA8j.mjs';
-import { N as NOOP_MIDDLEWARE_FN } from './noop-middleware_BcSrVYE9.mjs';
-import { D as DEFAULT_404_ROUTE, d as default404Instance, e as ensure404Route } from './astro-designed-error-pages_DTcFOCK8.mjs';
+import { r as requestIs404Or500, i as isRequestServerIsland, n as notFound, a as normalizeTheLocale, b as redirectToFallback, c as redirectToDefaultLocale, d as requestHasLocale, e as defineMiddleware, S as SERVER_ISLAND_COMPONENT, f as SERVER_ISLAND_ROUTE, g as createEndpoint, R as RouteCache, s as sequence, h as findRouteToRewrite, v as validateAndDecodePathname, m as matchRoute, j as RenderContext, P as PERSIST_SYMBOL, k as getSetCookiesFromResponse } from './index_BMeGUCi_.mjs';
+import { w as ROUTE_TYPE_HEADER, x as REROUTE_DIRECTIVE_HEADER, D as DEFAULT_404_COMPONENT, A as AstroError, y as ActionNotFoundError, z as s, B as clientAddressSymbol, L as LocalsNotAnObject, F as FailedToFindPageMapSSR, C as REROUTABLE_STATUS_CODES, E as responseSentSymbol } from './astro/server_z50TpEtD.mjs';
+import { N as NOOP_MIDDLEWARE_FN } from './noop-middleware_CR3RxFs2.mjs';
+import { D as DEFAULT_404_ROUTE, d as default404Instance, e as ensure404Route } from './astro-designed-error-pages_D8_sP6mS.mjs';
 import 'cloudflare:workers';
 
 function createI18nMiddleware(i18n, base, trailingSlash, format) {

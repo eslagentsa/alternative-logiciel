@@ -8,7 +8,7 @@
     "/_astro/*",
     "/about",
     "/categories",
-    "/comparatifs",
+    "/comparatifs/*",
     "/contact"
   ]
 }

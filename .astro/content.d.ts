@@ -182,6 +182,14 @@ declare module 'astro:content' {
   rendered?: RenderedContent;
   filePath?: string;
 }>;
+"guides": Record<string, {
+  id: string;
+  body?: string;
+  collection: "guides";
+  data: any;
+  rendered?: RenderedContent;
+  filePath?: string;
+}>;
 "pages": Record<string, {
   id: string;
   render(): Render[".md"];

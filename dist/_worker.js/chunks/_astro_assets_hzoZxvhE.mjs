@@ -1,30 +1,8 @@
 globalThis.process ??= {}; globalThis.process.env ??= {};
-import { j as joinPaths, i as isRemotePath } from './path_CH3auf61.mjs';
+import { j as joinPaths, i as isRemotePath } from './path_BgNISshD.mjs';
 import { i as isRemoteAllowed } from './remote_CrdlObHx.mjs';
-import { A as AstroError, E as ExpectedImage, L as LocalImageUsedWrongly, M as MissingImageDimension, U as UnsupportedImageFormat, I as IncompatibleDescriptorOptions, a as UnsupportedImageConversion, t as toStyleString, N as NoImageMetadata, F as FailedToFetchRemoteImageDimensions, R as RemoteImageNotAllowed, b as ExpectedImageOptions, c as ExpectedNotESMImage, d as InvalidImageService, e as createAstro, f as createComponent, g as ImageMissingAlt, m as maybeRenderHead, h as addAttribute, s as spreadAttributes, r as renderTemplate, i as ExperimentalFontsNotEnabled, j as FontFamilyNotFound, u as unescapeHTML } from './astro/server_BtOBAA8j.mjs';
-import './_@astro-renderers_CNmfMpJ1.mjs';
-
-const VALID_SUPPORTED_FORMATS = [
-  "jpeg",
-  "jpg",
-  "png",
-  "tiff",
-  "webp",
-  "gif",
-  "svg",
-  "avif"
-];
-const DEFAULT_OUTPUT_FORMAT = "webp";
-const DEFAULT_HASH_PROPS = [
-  "src",
-  "width",
-  "height",
-  "format",
-  "quality",
-  "fit",
-  "position",
-  "background"
-];
+import { A as AstroError, am as ExpectedImage, an as LocalImageUsedWrongly, ao as MissingImageDimension, ap as UnsupportedImageFormat, aq as IncompatibleDescriptorOptions, ar as UnsupportedImageConversion, as as toStyleString, at as NoImageMetadata, au as FailedToFetchRemoteImageDimensions, av as RemoteImageNotAllowed, aw as ExpectedImageOptions, ax as ExpectedNotESMImage, ay as InvalidImageService, d as createAstro, c as createComponent, az as ImageMissingAlt, m as maybeRenderHead, b as addAttribute, l as spreadAttributes, a as renderTemplate, aA as ExperimentalFontsNotEnabled, aB as FontFamilyNotFound, u as unescapeHTML } from './astro/server_z50TpEtD.mjs';
+import { D as DEFAULT_OUTPUT_FORMAT, a as VALID_SUPPORTED_FORMATS, b as DEFAULT_HASH_PROPS } from './consts_DBS1dnOp.mjs';
 
 const DEFAULT_RESOLUTIONS = [
   640,
@@ -1461,7 +1439,7 @@ async function getConfiguredImageService() {
   if (!globalThis?.astroAsset?.imageService) {
     const { default: service } = await import(
       // @ts-expect-error
-      './sharp_pGvjac62.mjs'
+      './sharp_Dlb-PiIE.mjs'
     ).catch((e) => {
       const error = new AstroError(InvalidImageService);
       error.cause = e;
@@ -2239,35 +2217,12 @@ const assetQueryParams = undefined;
 							});
 							const getImage = async (options) => await getImage$1(options, imageConfig);
 
-const prerender = false;
-const GET = (ctx) => {
-  const href = ctx.url.searchParams.get("href");
-  if (!href) {
-    return new Response("Missing 'href' query parameter", {
-      status: 400,
-      statusText: "Missing 'href' query parameter"
-    });
-  }
-  if (isRemotePath(href)) {
-    if (isRemoteAllowed(href, imageConfig) === false) {
-      return new Response("Forbidden", { status: 403 });
-    } else {
-      return Response.redirect(href, 302);
-    }
-  }
-  const proxied = new URL(href, ctx.url.origin);
-  if (proxied.origin !== ctx.url.origin) {
-    return new Response("Forbidden", { status: 403 });
-  }
-  return fetch(proxied);
-};
-
-const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+const _astro_assets = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
-  GET,
-  prerender
+  getConfiguredImageService,
+  getImage,
+  imageConfig,
+  isLocalService
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const page = () => _page;
-
-export { page as a, baseService as b, parseQuality as p };
+export { _astro_assets as _, baseService as b, imageConfig as i, parseQuality as p };

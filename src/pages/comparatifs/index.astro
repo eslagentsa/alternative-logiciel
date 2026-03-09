@@ -2,72 +2,111 @@
 export const prerender = true;
 
 import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
 
-const comparisons = [
-  {
-    title: "Top 10 Alternatives à Notion",
-    description: "Découvrez les meilleurs outils pour remplacer Notion en 2026.",
-    slug: "top-10-alternatives-notion",
-    category: "Productivité",
-    rating: 4.8
-  },
-  {
-    title: "Meilleures Alternatives à Trello",
-    description: "Comparez les 10 meilleures alternatives à Trello.",
-    slug: "meilleures-alternatives-trello",
-    category: "Gestion de Projet",
-    rating: 4.7
-  },
-  {
-    title: "Alternatives à Photoshop",
-    description: "Les meilleurs outils de retouche photo gratuits et payants.",
-    slug: "alternatives-photoshop",
-    category: "Design",
-    rating: 4.6
-  }
-];
+const comparisons = await getCollection('comparisons');
+const sortedComparisons = comparisons.sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
+
+const featuredComparison = sortedComparisons.find(c => c.data.featured);
+const otherComparisons = sortedComparisons.filter(c => c !== featuredComparison);
+
+// Catégories uniques
+const categories = [...new Set(comparisons.map(c => c.data.category))];
 ---
 
 <Layout 
-  title="Tous les Comparatifs - Alternative Logiciel"
-  description="Découvrez tous nos comparatifs de logiciels et trouvez les meilleures alternatives."
+  title="Comparatifs Logiciels - Alternative Logiciel"
+  description="Nos comparatifs détaillés des meilleures alternatives aux logiciels populaires. Tests, avis et recommandations."
 >
   <div class="pt-24 pb-12 px-4">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-12">
-        <h1 class="text-4xl font-bold mb-4">Tous les Comparatifs</h1>
+        <h1 class="text-4xl font-bold mb-4">Nos Comparatifs</h1>
         <p class="text-[var(--color-text-secondary)] max-w-2xl mx-auto">
-          Nos analyses détaillées pour vous aider à choisir le meilleur logiciel
+          Analyses approfondies et comparatifs détaillés pour vous aider à choisir la meilleure alternative logiciel
         </p>
       </div>
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {comparisons.map(comparison => (
-          <article class="glass-card overflow-hidden group">
-            <a href={`/comparatifs/${comparison.slug}`} class="block p-6">
-              <div class="flex items-start justify-between mb-4">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-500/10 text-purple-400">
-                  {comparison.category}
-                </span>
-                <span class="flex items-center text-yellow-400 text-sm">
-                  ★ {comparison.rating}
-                </span>
-              </div>
-              
-              <h2 class="text-xl font-bold text-[var(--color-text-primary)] mb-2 group-hover:text-purple-400 transition-colors">
-                {comparison.title}
-              </h2>
-              
-              <p class="text-[var(--color-text-secondary)] text-sm mb-4">
-                {comparison.description}
-              </p>
-              
-              <span class="text-sm font-medium text-purple-400 group-hover:translate-x-1 transition-transform inline-block">
-                Lire le comparatif →
-              </span>
-            </a>
-          </article>
+
+      {/* Filtres par catégorie */}
+      <div class="flex flex-wrap justify-center gap-2 mb-12">
+        <a href="#" class="px-4 py-2 rounded-full bg-purple-600 text-white text-sm">Tous</a>
+        {categories.map(cat => (
+          <a href={`#${cat}`} class="px-4 py-2 rounded-full glass text-sm hover:bg-purple-600/20 transition-colors">
+            {cat.charAt(0).toUpperCase() + cat.slice(1)}
+          </a>
         ))}
+      </div>
+      
+      {/* Comparatif mis en avant */}
+      {featuredComparison && (
+        <div class="mb-12">
+          <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+            <span class="text-yellow-400">★</span> Comparatif à la Une
+          </h2>
+          <a href={`/comparatifs/${featuredComparison.slug}`} class="block glass-card overflow-hidden group">
+            <div class="p-8">
+              <div class="flex items-start gap-6">
+                <div class="flex-1">
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-500/10 text-purple-400 mb-3">
+                    {featuredComparison.data.category}
+                  </span>
+                  <h3 class="text-2xl font-bold mb-3 group-hover:text-purple-400 transition-colors">
+                    {featuredComparison.data.title}
+                  </h3>
+                  <p class="text-[var(--color-text-secondary)] mb-4">
+                    {featuredComparison.data.description}
+                  </p>
+                  <div class="flex items-center gap-4 text-sm text-[var(--color-text-muted)]">
+                    <span><i class="fas fa-star text-yellow-400"></i> {featuredComparison.data.alternatives.length} alternatives testées</span>
+                    <span><i class="fas fa-calendar"></i> {featuredComparison.data.publishDate.toLocaleDateString('fr-FR')}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      )}
+      
+      {/* Tous les comparatifs */}
+      <div>
+        <h2 class="text-xl font-semibold mb-4">Tous les Comparatifs</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {otherComparisons.map(comparison => (
+            <a href={`/comparatifs/${comparison.slug}`} class="block glass-card overflow-hidden group">
+              <div class="p-6">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-500/10 text-purple-400 mb-2">
+                  {comparison.data.category}
+                </span>
+                <h3 class="text-lg font-bold mb-2 group-hover:text-purple-400 transition-colors">
+                  {comparison.data.title}
+                </h3>
+                <p class="text-[var(--color-text-secondary)] text-sm mb-3">
+                  {comparison.data.description}
+                </p>
+                <div class="flex items-center justify-between text-sm text-[var(--color-text-muted)]">
+                  <span>{comparison.data.alternatives.length} alternatives</span>
+                  <span>{comparison.data.publishDate.toLocaleDateString('fr-FR')}</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+      
+      {/* CTA Newsletter */}
+      <div class="mt-16 text-center glass-card p-8">
+        <h3 class="text-xl font-bold mb-2">Ne manquez aucun comparatif</h3>
+        <p class="text-[var(--color-text-secondary)] mb-4">Recevez nos nouveaux comparatifs directement par email</p>
+        <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault(); alert('Inscription enregistrée !');">
+          <input 
+            type="email" 
+            placeholder="votre@email.com"
+            class="flex-1 px-4 py-3 rounded-xl bg-[var(--color-bg-tertiary)] border border-[var(--color-border)] text-[var(--color-text-primary)] focus:outline-none focus:border-purple-500"
+          />
+          <button type="submit" class="px-6 py-3 bg-purple-600 text-white rounded-xl hover:bg-purple-500 transition-colors">
+            S'inscrire
+          </button>
+        </form>
       </div>
     </div>
   </div>
