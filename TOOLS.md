@@ -82,3 +82,11 @@ Voir `TROUBLESHOOTING.md` pour:
 - Problèmes d'édition
 - Erreurs Tailwind
 - Issues Cloudflare Pages
+
+## Outils Externes
+
+Voir `EXTERNAL-TOOLS.md` pour:
+- Configuration Chrome Browser
+- Accès Gmail configuré
+- Exemples d'utilisation
+- Sécurité des credentials

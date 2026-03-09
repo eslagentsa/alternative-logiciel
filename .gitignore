@@ -16,6 +16,8 @@ node_modules/
 .env
 .env.local
 .env.*.local
+.email-credentials
+.github-credentials
 
 # IDE
 .vscode/
