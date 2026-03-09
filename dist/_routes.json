@@ -6,6 +6,7 @@
   "exclude": [
     "/",
     "/_astro/*",
+    "/images/logos/placeholder.svg",
     "/about",
     "/categories",
     "/comparatifs/*",
