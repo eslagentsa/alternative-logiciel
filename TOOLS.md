@@ -1,40 +1,84 @@
-# TOOLS.md - Local Notes
+# TOOLS.md - Configuration et meilleures pratiques
 
-Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
+## Modèles et Providers
 
-## What Goes Here
+**Modèle actuel**: openrouter/moonshotai/kimi-k2.5
+**Fallback**: openrouter/openai/gpt-4o-mini (si timeout)
 
-Things like:
+### Quand utiliser "thinking": "high"
+- Problèmes complexes de debug
+- Architecture logicielle
+- Refactoring important
+- Code critiques (auth, paiement, etc.)
 
-- Camera names and locations
-- SSH hosts and aliases
-- Preferred voices for TTS
-- Speaker/room names
-- Device nicknames
-- Anything environment-specific
+### Quand utiliser "thinking": "low" (défaut)
+- Tâches routinières (commit, push)
+- Éditions simples
+- Vérifications de statut
 
-## Examples
+## Timeouts et Performance
 
-```markdown
-### Cameras
+| Type de tâche | Timeout recommandé |
+|---------------|-------------------|
+| `git clone` | 60s |
+| `npm install` | 120s |
+| `npm run build` (Astro) | 180-300s |
+| `curl` simple | 10s |
+| Build Cloudflare Pages | 60s (attente) + vérification |
 
-- living-room → Main area, 180° wide angle
-- front-door → Entrance, motion-triggered
-
-### SSH
-
-- home-server → 192.168.1.100, user: admin
-
-### TTS
-
-- Preferred voice: "Nova" (warm, slightly British)
-- Default speaker: Kitchen HomePod
+### Pour les tâches longues
+```json
+{
+  "timeout": 300,
+  "pty": false
+}
 ```
 
-## Why Separate?
+### Pour les builds
+Toujours vérifier le code de retour:
+- `0` = OK
+- `1` ou autre = Erreur → analyser les logs
 
-Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
+## Cloudflare Pages
 
+### Build command recommandée
+```yaml
+Command: npm run build
+Output directory: dist
+Framework: Astro
+```
+
+### Pages statiques
+Pour toutes les pages publiques:
+```astro
 ---
+export const prerender = true;
+---
+```
 
-Add whatever helps you do your job. This is your cheat sheet.
+### Attente après push
+1. Push GitHub (instantané)
+2. Build Cloudflare Pages (~1-2 min)
+3. Déploiement global (~1 min)
+4. **Total d'attente**: 30-60s, puis vérification
+
+## Git - Bonnes pratiques
+
+### Commit
+- Message en français clair
+- Petit commit = un seul changement logique
+- Vérifier `git status` avant commit
+
+### Push avec token
+```bash
+# Évite d'avoir à configurer l'auth
+# Token stocké dans la session
+```
+
+## Troubleshooting rapide
+
+Voir `TROUBLESHOOTING.md` pour:
+- Erreurs OpenRouter
+- Problèmes d'édition
+- Erreurs Tailwind
+- Issues Cloudflare Pages
