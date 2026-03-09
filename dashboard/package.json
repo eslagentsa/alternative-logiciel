@@ -1,9 +1,7 @@
 {
   "name": "agent-dashboard",
   "version": "1.0.0",
-  "description": "Dashboard Agent Empire Web",
   "scripts": {
-    "build": "node update-dashboard.js && echo 'Build complete'",
-    "update": "node update-dashboard.js"
+    "build": "echo 'Static site - no build needed'"
   }
 }
