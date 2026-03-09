@@ -1,0 +1,27 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CategoryCard from '../../components/CategoryCard.astro';
+import { categories } from '../../data/categories';
+---
+
+<Layout 
+  title="Catégories - Alternative Logiciel"
+  description="Parcourez les catégories de logiciels et trouvez des alternatives adaptées à vos besoins."
+>
+  <div class="pt-24 pb-12 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold mb-4">Catégories</h1>
+        <p class="text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+          Choisissez une catégorie pour découvrir les meilleures alternatives aux logiciels populaires
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {categories.map(category => (
+          <CategoryCard {...category} />
+        ))}
+      </div>
+    </div>
+  </div>
+</Layout>

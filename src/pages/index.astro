@@ -1,7 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
-import ComparisonCard from '../components/ComparisonCard.astro';
 import CategoryCard from '../components/CategoryCard.astro';
 import { categories } from '../data/categories';
 
@@ -21,28 +20,168 @@ const featuredComparisons = [
     rating: 4.7
   }
 ];
+
+// Données exemples pour les comparatifs
+const comparisons = [
+  {
+    title: "Top 10 Alternatives à Notion",
+    description: "Découvrez les meilleurs outils pour remplacer Notion en 2026. Comparatifs détaillés des solutions de productivité.",
+    slug: "top-10-alternatives-notion",
+    category: "Productivité",
+    categorySlug: "productivite",
+    featured: true,
+    mainSoftware: {
+      name: "Notion",
+      description: "Outil de productivité tout-en-un",
+      price: "Gratuit / $10/mois",
+      rating: 4.8
+    },
+    alternatives: [
+      {
+        name: "Obsidian",
+        description: "Prise de notes en markdown avec graphe de connaissances",
+        price: "Gratuit (usage personnel)",
+        rating: 4.9,
+        openSource: false,
+        pros: ["100% offline", "Liens entre notes puissants", "Plugins communautaires"],
+        cons: ["Courbe d'apprentissage", "Pas de collaboration native"]
+      },
+      {
+        name: "Logseq",
+        description: "Base de connaissances open-source",
+        price: "Gratuit",
+        rating: 4.7,
+        openSource: true,
+        pros: ["Open source", "Outliner puissant", "Graph view"],
+        cons: ["Interface moins polish", "Moins d'intégrations"]
+      }
+    ]
+  },
+  {
+    title: "Meilleures Alternatives à Trello",
+    description: "Comparez les 10 meilleures alternatives à Trello pour la gestion de projet.",
+    slug: "meilleures-alternatives-trello",
+    category: "Gestion de Projet",
+    categorySlug: "gestion-projet",
+    featured: false,
+    mainSoftware: {
+      name: "Trello",
+      description: "Tableau Kanban simple et intuitif",
+      price: "Gratuit / $5/mois",
+      rating: 4.5
+    },
+    alternatives: [
+      {
+        name: "ClickUp",
+        description: "Plateforme tout-en-one pour les équipes",
+        price: "Gratuit / $7/mois",
+        rating: 4.6,
+        openSource: false,
+        pros: ["Fonctionnalités riches", "Vues multiples", "Automatisations"],
+        cons: ["Interface complexe", "Peut être lent"]
+      },
+      {
+        name: "Focalboard",
+        description: "Alternative open-source à Trello",
+        price: "Gratuit / Auto-hébergé",
+        rating: 4.4,
+        openSource: true,
+        pros: ["Open source", "Auto-hébergement possible", "Similaire à Trello"],
+        cons: ["Moins mature", "Communauté plus petite"]
+      }
+    ]
+  }
+];
 ---
 
 <Layout title="Alternative Logiciel - Trouvez le Meilleur Outil">
-  <Hero 
-    title="Trouvez l'Alternative Parfaite"
-    subtitle="Comparez les meilleurs outils digitaux et trouvez celui qui correspond à vos besoins."
-  />
+  <Hero />
 
   <section class="py-20 px-4">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-12">Comparatifs Populaires</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {featuredComparisons.map(c => <ComparisonCard {...c} />)}
+      <h2 class="text-3xl font-bold text-center mb-4">Comparatifs Populaires</h2>
+      <p class="text-center text-[var(--color-text-secondary)] mb-12 max-w-2xl mx-auto">
+        Découvrez nos analyses détaillées des meilleures alternatives aux logiciels populaires
+      </p>
+      
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {comparisons.map(comparison => (
+          <article class="glass-card overflow-hidden group">
+            <a href={`/comparatifs/${comparison.slug}`} class="block p-6 lg:p-8">
+              <div class="flex items-start justify-between mb-4">
+                <div>
+                  <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-500/10 text-purple-400 mb-2">
+                    {comparison.category}
+                  </span>
+                  <h3 class="text-xl font-bold text-[var(--color-text-primary)] group-hover:text-purple-400 transition-colors">
+                    {comparison.title}
+                  </h3>
+                </div>
+              </div>
+              
+              <p class="text-[var(--color-text-secondary)] mb-6">
+                {comparison.description}
+              </p>
+              
+              <div class="flex items-center justify-between pt-4 border-t border-[var(--color-border)]">
+                <span class="text-sm text-[var(--color-text-muted)]">
+                  {comparison.alternatives.length} alternatives testées
+                </span>
+                <span class="text-sm font-medium text-purple-400 group-hover:translate-x-1 transition-transform">
+                  Voir le comparatif →
+                </span>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+      
+      <div class="text-center mt-12">
+        <a href="/comparatifs" class="inline-flex items-center px-6 py-3 bg-purple-600 text-white rounded-xl hover:bg-purple-500 transition-colors">
+          Voir tous les comparatifs
+        </a>
       </div>
     </div>
   </section>
 
   <section class="py-20 px-4 bg-slate-900/50">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-12">Catégories</h2>
+      <h2 class="text-3xl font-bold text-center mb-4">Parcourir par Catégorie</h2>
+      <p class="text-center text-[var(--color-text-secondary)] mb-12 max-w-2xl mx-auto">
+        Trouvez des alternatives adaptées à vos besoins spécifiques
+      </p>
+      
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
         {categories.map(c => <CategoryCard {...c} />)}
+      </div>
+    </div>
+  </section>
+  
+  <section class="py-20 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-6">Pourquoi chercher des alternatives ?</h2>
+      <div class="grid md:grid-cols-3 gap-8 mt-12">
+        <div class="glass-card p-6">
+          <div class="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">💰</span>
+          </div>
+          <h3 class="font-semibold mb-2">Économisez</h3>
+          <p class="text-sm text-[var(--color-text-secondary)]">Trouvez des solutions gratuites ou moins chères sans compromis sur la qualité.</p>
+        </div>
+        <div class="glass-card p-6">
+          <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">🔒</span>
+          </div>
+          <h3 class="font-semibold mb-2">Protégez vos données</h3>
+          <p class="text-sm text-[var(--color-text-secondary)]">Optez pour des solutions open-source et auto-hébergées pour plus de confidentialité.</p>
+        </div>
+        <div class="glass-card p-6">
+          <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center mx-auto mb-4">
+            <span class="text-2xl">⚡</span>
+          </div>
+          <h3 class="font-semibold mb-2">Gagnez en performance</h3>
+          <p class="text-sm text-[var(--color-text-secondary)]">Découvrez des outils plus légers et plus rapides que les logiciels gourmands.</p>
+        </div>
       </div>
     </div>
   </section>

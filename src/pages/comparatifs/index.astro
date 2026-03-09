@@ -1,0 +1,72 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const comparisons = [
+  {
+    title: "Top 10 Alternatives à Notion",
+    description: "Découvrez les meilleurs outils pour remplacer Notion en 2026.",
+    slug: "top-10-alternatives-notion",
+    category: "Productivité",
+    rating: 4.8
+  },
+  {
+    title: "Meilleures Alternatives à Trello",
+    description: "Comparez les 10 meilleures alternatives à Trello.",
+    slug: "meilleures-alternatives-trello",
+    category: "Gestion de Projet",
+    rating: 4.7
+  },
+  {
+    title: "Alternatives à Photoshop",
+    description: "Les meilleurs outils de retouche photo gratuits et payants.",
+    slug: "alternatives-photoshop",
+    category: "Design",
+    rating: 4.6
+  }
+];
+---
+
+<Layout 
+  title="Tous les Comparatifs - Alternative Logiciel"
+  description="Découvrez tous nos comparatifs de logiciels et trouvez les meilleures alternatives."
+>
+  <div class="pt-24 pb-12 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold mb-4">Tous les Comparatifs</h1>
+        <p class="text-[var(--color-text-secondary)] max-w-2xl mx-auto">
+          Nos analyses détaillées pour vous aider à choisir le meilleur logiciel
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {comparisons.map(comparison => (
+          <article class="glass-card overflow-hidden group">
+            <a href={`/comparatifs/${comparison.slug}`} class="block p-6">
+              <div class="flex items-start justify-between mb-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-500/10 text-purple-400">
+                  {comparison.category}
+                </span>
+                <span class="flex items-center text-yellow-400 text-sm">
+                  ★ {comparison.rating}
+                </span>
+              </div>
+              
+              <h2 class="text-xl font-bold text-[var(--color-text-primary)] mb-2 group-hover:text-purple-400 transition-colors">
+                {comparison.title}
+              </h2>
+              
+              <p class="text-[var(--color-text-secondary)] text-sm mb-4">
+                {comparison.description}
+              </p>
+              
+              <span class="text-sm font-medium text-purple-400 group-hover:translate-x-1 transition-transform inline-block">
+                Lire le comparatif →
+              </span>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</Layout>
