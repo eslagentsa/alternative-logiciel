@@ -247,20 +247,59 @@ alternatives:
 
 ## Notre Verdict
 
-### 🏆 Meilleure Alternative Globale : **Obsidian**
+<div class="verdict-grid">
+
+<div class="verdict-card">
+
+### 🏆 Meilleure Alternative Globale
+
+**Obsidian**
+
 Pour sa flexibilité, sa puissance, et son respect de la vie privée. Parfait pour les utilisateurs qui veulent un système de connaissances robuste.
 
-### 💰 Meilleure Alternative Gratuite : **Logseq**
+</div>
+
+<div class="verdict-card">
+
+### 💰 Meilleure Alternative Gratuite
+
+**Logseq**
+
 100% gratuit, open source, et extrêmement puissant pour la prise de notes connectée.
 
-### 🚀 Meilleure pour les Équipes : **ClickUp**
+</div>
+
+<div class="verdict-card">
+
+### 🚀 Meilleure pour les Équipes
+
+**ClickUp**
+
 Remplace Notion + Trello + Slack + Docs en une seule plateforme.
 
-### 🔒 Meilleure pour la Confidentialité : **Anytype**
+</div>
+
+<div class="verdict-card">
+
+### 🔒 Meilleure pour la Confidentialité
+
+**Anytype**
+
 Données locales, chiffrées, sans serveur central.
 
-### 📝 Meilleure pour Écrire : **Bear**
+</div>
+
+<div class="verdict-card">
+
+### 📝 Meilleure pour Écrire
+
+**Bear**
+
 Pour les utilisateurs Apple qui veulent une expérience d'écriture sublime.
+
+</div>
+
+</div>
 
 ## Comment Choisir ?
 

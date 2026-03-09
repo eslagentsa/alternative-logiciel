@@ -297,4 +297,43 @@ const { title, description, publishDate, lastUpdated, author, category, mainSoft
     font-style: italic;
     color: var(--color-text-secondary);
   }
+  
+  /* Verdict Cards */
+  .verdict-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+  
+  .verdict-card {
+    background: linear-gradient(135deg, var(--color-bg-secondary), var(--color-bg-tertiary));
+    border: 1px solid var(--color-border);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .verdict-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(124, 58, 237, 0.15);
+  }
+  
+  .verdict-card h3 {
+    margin-top: 0 !important;
+    margin-bottom: 1rem !important;
+    font-size: 1.25rem !important;
+  }
+  
+  .verdict-card strong {
+    display: block;
+    font-size: 1.5rem;
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+  }
+  
+  .verdict-card p {
+    margin-bottom: 0;
+    line-height: 1.6;
+  }
 </style>
