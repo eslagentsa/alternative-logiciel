@@ -4,6 +4,11 @@
     "/*"
   ],
   "exclude": [
-    "/_astro/*"
+    "/",
+    "/_astro/*",
+    "/about",
+    "/categories",
+    "/comparatifs",
+    "/contact"
   ]
 }
