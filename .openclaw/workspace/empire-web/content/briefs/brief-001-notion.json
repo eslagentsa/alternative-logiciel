@@ -1,0 +1,86 @@
+{
+  "id": "brief-001",
+  "keyword": "alternative notion",
+  "title": "Top 10 Alternatives à Notion en 2026 : Le Comparatif Ultime",
+  "slug": "top-10-alternatives-notion",
+  "category": "productivity",
+  "priority": "high",
+  "word_count": 2500,
+  "target_audience": "Freelances, startups, étudiants cherchant un outil de productivité",
+  "search_intent": "comparative",
+  "structure": {
+    "introduction": {
+      "type": "h2",
+      "words": 150,
+      "content": "Hook sur la frustration Notion, promise des alternatives"
+    },
+    "why_alternative": {
+      "type": "h2",
+      "words": 200,
+      "content": "Limitations Notion (lenteur, complexité, offline)"
+    },
+    "criteria": {
+      "type": "h2",
+      "words": 150,
+      "content": "Comment comparer : UX, features, prix, offline"
+    },
+    "alternatives": {
+      "type": "h2",
+      "subsections": [
+        {"rank": 1, "tool": "ClickUp", "words": 250, "focus": "All-in-one, meilleure UX"},
+        {"rank": 2, "tool": "Obsidian", "words": 250, "focus": "Offline, PKM, gratuit"},
+        {"rank": 3, "tool": "Coda", "words": 250, "focus": "Documents interactifs"},
+        {"rank": 4, "tool": "Anytype", "words": 200, "focus": "Open source, privacy"},
+        {"rank": 5, "tool": "AppFlowy", "words": 200, "focus": "Open source, gratuit"},
+        {"rank": 6, "tool": "Craft", "words": 200, "focus": "Design Apple"},
+        {"rank": 7, "tool": "Simplenote", "words": 150, "focus": "Minimaliste, gratuit"},
+        {"rank": 8, "tool": "Tana", "words": 200, "focus": "AI-powered"},
+        {"rank": 9, "tool": "Capacities", "words": 200, "focus": "Objets connectés"},
+        {"rank": 10, "tool": "Logseq", "words": 200, "focus": "Open source, outliner"}
+      ]
+    },
+    "comparison_table": {
+      "type": "h2",
+      "words": 100,
+      "content": "Tableau comparatif prix/features"
+    },
+    "recommendation": {
+      "type": "h2",
+      "words": 200,
+      "content": "Meilleur choix selon profils (étudiant, pro, équipe)"
+    },
+    "faq": {
+      "type": "h2",
+      "words": 200,
+      "questions": [
+        "Quelle est la meilleure alternative gratuite ?",
+        "Peut-on importer ses données Notion ?",
+        "Quelle alternative pour les équipes ?"
+      ]
+    },
+    "conclusion": {
+      "type": "h2",
+      "words": 150,
+      "content": "Résumé + CTA tester alternatives"
+    }
+  },
+  "lsi_keywords": [
+    "meilleur logiciel productivité",
+    "gestion de projet",
+    "prise de notes",
+    "outil collaboratif",
+    "base de connaissances",
+    "wiki entreprise",
+    "gratuit open source"
+  ],
+  "competitors": [
+    "https://zapier.com/blog/best-notion-alternatives/",
+    "https://clickup.com/alternative/notion",
+    "https://www.pcmag.com/picks/best-notion-alternatives"
+  ],
+  "internal_links": [
+    "alternative trello",
+    "outils productivité"
+  ],
+  "cta": "Essayez ClickUp gratuitement pendant 14 jours"
+}

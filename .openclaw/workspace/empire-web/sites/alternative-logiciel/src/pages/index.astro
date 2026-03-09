@@ -1,0 +1,139 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ComparisonCard from '../components/ComparisonCard.astro';
+import CategoryCard from '../components/CategoryCard.astro';
+import { categories } from '../data/categories';
+
+const featuredComparisons = [
+  {
+    title: "Top 10 Alternatives à Notion",
+    description: "Découvrez les meilleurs outils pour remplacer Notion en 2026. ClickUp, Obsidian, Coda et plus.",
+    slug: "top-10-alternatives-notion",
+    category: "Productivité",
+    rating: 4.8,
+    image: "/images/notion-alternatives.jpg"
+  },
+  {
+    title: "Meilleures Alternatives à Trello",
+    description: "Kanban, Gantt, ou liste ? Comparez les 10 meilleures alternatives à Trello pour gérer vos projets.",
+    slug: "meilleures-alternatives-trello",
+    category: "Gestion de Projet",
+    rating: 4.7,
+    image: "/images/trello-alternatives.jpg"
+  },
+  {
+    title: "Slack vs Teams vs Discord",
+    description: "Le comparatif ultime des outils de communication d'équipe. Prix, features, sécurité.",
+    slug: "slack-vs-teams-discord",
+    category: "Communication",
+    rating: 4.9,
+    image: "/images/communication-tools.jpg"
+  }
+];
+
+const seo = {
+  title: "Alternative Logiciel - Trouvez le Meilleur Outil pour Votre Productivité",
+  description: "Comparez les meilleures alternatives aux logiciels populaires. Notion, Trello, Slack, Canva... Tests, avis et recommandations 2026.",
+  keywords: "alternative logiciel, comparatif outils, productivité, gestion projet"
+};
+---
+
+<Layout {...seo}>
+  <Hero 
+    title="Trouvez l'Alternative Parfaite"
+    subtitle="Comparez les meilleurs outils digitaux et trouvez celui qui correspond à vos besoins. Tests réels, comparatifs honnêtes, conseils d'experts."
+    ctaText="Explorer les Comparatifs"
+    ctaHref="#comparatifs"
+  />
+
+  <!-- Featured Comparisons -->
+  <section id="comparatifs" class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent mb-4">
+          Comparatifs Populaires
+        </h2>
+        <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+          Les outils les plus recherchés et nos recommandations détaillées
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {featuredComparisons.map(comparison => (
+          <ComparisonCard {...comparison} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="py-20 px-4 sm:px-6 lg:px-8 bg-slate-900/50">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent mb-4">
+          Parcourir par Catégorie
+        </h2>
+        <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+          Trouvez des alternatives dans votre domaine d'activité
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {categories.map(category => (
+          <CategoryCard {...category} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+        <div class="glass-card p-8 rounded-2xl">
+          <div class="text-4xl font-bold text-violet-400 mb-2">150+</div>
+          <div class="text-slate-400">Logiciels Comparés</div>
+        </div>
+        <div class="glass-card p-8 rounded-2xl">
+          <div class="text-4xl font-bold text-blue-400 mb-2">50+</div>
+          <div class="text-slate-400">Comparatifs</div>
+        </div>
+        <div class="glass-card p-8 rounded-2xl">
+          <div class="text-4xl font-bold text-pink-400 mb-2">10K+</div>
+          <div class="text-slate-400">Lecteurs Mensuels</div>
+        </div>
+        <div class="glass-card p-8 rounded-2xl">
+          <div class="text-4xl font-bold text-emerald-400 mb-2">100%</div>
+          <div class="text-slate-400">Tests Indépendants</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-violet-900/20 to-transparent">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        Recevez les Meilleures Alternatives
+      </h2>
+      <p class="text-slate-400 text-lg mb-8">
+        Un email par semaine avec les nouveaux outils testés et nos recommandations exclusives.
+      </p>
+      <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+        <input 
+          type="email" 
+          placeholder="votre@email.com" 
+          class="flex-1 px-6 py-4 bg-slate-800/50 border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-violet-500 transition-colors"
+        />
+        <button 
+          type="submit"
+          class="px-8 py-4 bg-gradient-to-r from-violet-600 to-blue-600 rounded-xl font-semibold text-white hover:opacity-90 transition-opacity"
+        >
+          S'abonner
+        </button>
+      </form>
+      <p class="text-slate-500 text-sm mt-4">Pas de spam. Désinscription à tout moment.</p>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,92 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const seo = {
+  title: "À Propos - Alternative Logiciel",
+  description: "Qui sommes-nous ? Notre mission est de vous aider à trouver les meilleures alternatives aux logiciels populaires."
+};
+---
+
+<Layout {...seo}>
+  <div class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent mb-8 text-center">
+        À Propos d'Alternative Logiciel
+      </h1>
+      
+      <div class="prose prose-invert prose-lg max-w-none">
+        <p class="text-slate-300 text-xl leading-relaxed mb-8">
+          Alternative Logiciel est né d'une frustration simple : trouver le bon outil parmi des milliers d'options disponibles. 
+          Notre mission est de vous faire gagner du temps en testant et comparant les logiciels pour vous.
+        </p>
+
+        <h2 class="text-2xl font-bold text-white mt-12 mb-4">Notre Méthodologie</h2>
+        <p class="text-slate-400 mb-6">
+          Chaque logiciel que nous recommandons est testé dans des conditions réelles. Nous utilisons ces outils 
+          au quotidien dans nos propres projets avant de les évaluer. Aucun avis ne se base sur des spécifications 
+          techniques uniquement - nous valorisons l'expérience utilisateur réelle.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-12">
+          <div class="glass-card p-6 rounded-xl text-center">
+            <div class="w-12 h-12 bg-violet-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-white mb-2">Tests Réels</h3>
+            <p class="text-slate-400 text-sm">Chaque outil est testé en conditions réelles pendant plusieurs semaines.</p>
+          </div>
+          <div class="glass-card p-6 rounded-xl text-center">
+            <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-white mb-2">Indépendance</h3>
+            <p class="text-slate-400 text-sm">Aucune influence éditoriale des éditeurs de logiciels sur nos avis.</p>
+          </div>
+          <div class="glass-card p-6 rounded-xl text-center">
+            <div class="w-12 h-12 bg-pink-500/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+              <svg class="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <h3 class="font-semibold text-white mb-2">Mises à Jour</h3>
+            <p class="text-slate-400 text-sm">Nos comparatifs sont régulièrement mis à jour pour rester pertinents.</p>
+          </div>
+        </div>
+
+        <h2 class="text-2xl font-bold text-white mt-12 mb-4">Notre Équipe</h2>
+        <p class="text-slate-400 mb-6">
+          Nous sommes une petite équipe de passionnés de productivité et d'outils digitaux. Basés entre la France 
+          et le Luxembourg, nous avons une vision européenne des outils de travail et valorisons particulièrement 
+          les solutions respectueuses de la vie privée (RGPD).
+        </p>
+
+        <h2 class="text-2xl font-bold text-white mt-12 mb-4">Transparence</h2>
+        <p class="text-slate-400 mb-6">
+          Alternative Logiciel participe à des programmes d'affiliation. Cela signifie que nous pouvons recevoir 
+          une commission si vous cliquez sur certains liens et effectuez un achat. Cependant, cela n'influence 
+          en aucun cas nos recommandations. Notre crédibilité est notre bien le plus précieux.
+        </p>
+
+        <div class="glass-card p-8 rounded-xl mt-12">
+          <h2 class="text-2xl font-bold text-white mb-4">Contactez-nous</h2>
+          <p class="text-slate-400 mb-4">
+            Une question ? Une suggestion ? Un logiciel que vous aimeriez voir comparé ?
+          </p>
+          <a 
+            href="mailto:esl.agentsa@gmail.com" 
+            class="inline-flex items-center gap-2 text-violet-400 hover:text-violet-300 transition-colors"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            esl.agentsa@gmail.com
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
