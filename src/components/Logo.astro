@@ -1,0 +1,45 @@
+---
+// Composant Logo - Affiche les logos des logiciels via Iconify
+
+interface Props {
+  name: string;
+  size?: number;
+  class?: string;
+}
+
+const { name, size = 48, class: className = '' } = Astro.props;
+
+// Mapping des noms de logiciels vers les logos Iconify
+const logoMap: Record<string, string> = {
+  'notion': 'logos:notion-icon',
+  'obsidian': 'simple-icons:obsidian',
+  'logseq': 'simple-icons:logseq',
+  'anytype': 'simple-icons:anytype',
+  'clickup': 'logos:clickup',
+  'asana': 'logos:asana',
+  'trello': 'logos:trello',
+  'github': 'mdi:github',
+  'vscode': 'logos:visual-studio-code',
+  'gimp': 'logos:gimp',
+  'photoshop': 'logos:adobe-photoshop',
+  'office': 'logos:microsoft-office',
+  'libreoffice': 'simple-icons:libreoffice',
+  'figma': 'logos:figma',
+  'sketch': 'logos:sketch',
+  'slack': 'logos:slack-icon',
+  'discord': 'logos:discord-icon',
+  'zoom': 'logos:zoom',
+  'meet': 'logos:google-meet',
+  'chrome': 'logos:chrome',
+  'firefox': 'logos:firefox',
+  'safari': 'logos:safari',
+};
+
+const iconName = logoMap[name.toLowerCase()] || 'mdi:application';
+---
+
+<span class={`inline-flex items-center justify-center ${className}`}>
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+    <use href={`https://api.iconify.design/${iconName}.svg`} />
+  </svg>
+</span>
