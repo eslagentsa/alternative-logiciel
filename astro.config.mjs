@@ -2,11 +2,13 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
+import cloudflare from '@astrojs/cloudflare';
 import keystatic from '@keystatic/astro';
 
 export default defineConfig({
   site: 'https://alternative-logiciel.pages.dev',
-  output: 'static',
+  output: 'server',
+  adapter: cloudflare(),
   integrations: [
     react(),
     sitemap({
