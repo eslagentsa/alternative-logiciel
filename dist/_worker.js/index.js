@@ -1,7 +1,7 @@
 globalThis.process ??= {}; globalThis.process.env ??= {};
 import { r as renderers } from './chunks/_@astro-renderers_ZkvB7lbw.mjs';
 import { c as createExports, s as serverEntrypointModule } from './chunks/_@astrojs-ssr-adapter_C-_sqSNC.mjs';
-import { manifest } from './manifest_BV-Q9RUK.mjs';
+import { manifest } from './manifest_CjYObZeu.mjs';
 
 const serverIslandMap = new Map();;
 

@@ -218,20 +218,59 @@ alternatives:
 
 ## Notre Verdict
 
-### 🏆 Meilleure Alternative Gratuite : **LibreOffice**
+<div class="verdict-grid">
+
+<div class="verdict-card">
+
+### 🏆 Meilleure Alternative Gratuite
+
+**LibreOffice**
+
 La suite complète, open source et gratuite la plus aboutie. Compatible Office.
 
-### 🌐 Meilleure en Ligne : **Google Workspace**
+</div>
+
+<div class="verdict-card">
+
+### 🌐 Meilleure en Ligne
+
+**Google Workspace**
+
 Pour la collaboration en temps réel et l'accessibilité cloud.
 
-### 🔒 Meilleure pour la Confidentialité : **CryptPad**
+</div>
+
+<div class="verdict-card">
+
+### 🔒 Meilleure pour la Confidentialité
+
+**CryptPad**
+
 Documents chiffrés de bout en bout, zero-knowledge.
 
-### 💰 Meilleure Sans Abonnement : **SoftMaker Office**
+</div>
+
+<div class="verdict-card">
+
+### 💰 Meilleure Sans Abonnement
+
+**SoftMaker Office**
+
 Achat définitif pour €70, interface moderne et rapide.
 
-### 📊 Meilleure Compatibilité : **OnlyOffice**
+</div>
+
+<div class="verdict-card">
+
+### 📊 Meilleure Compatibilité
+
+**OnlyOffice**
+
 Formats Office parfaitement supportés, auto-hébergeable.
+
+</div>
+
+</div>
 
 ## Comparatif Rapide
 

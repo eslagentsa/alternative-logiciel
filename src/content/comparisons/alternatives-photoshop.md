@@ -232,20 +232,59 @@ alternatives:
 
 ## Notre Verdict
 
-### 🏆 Meilleure Alternative Professionnelle : **Affinity Photo**
+<div class="verdict-grid">
+
+<div class="verdict-card">
+
+### 🏆 Meilleure Alternative Professionnelle
+
+**Affinity Photo**
+
 Pour les professionnels qui veulent éviter l'abonnement Adobe. Toutes les fonctionnalités pour $75 une fois.
 
-### 💰 Meilleure Gratuite : **GIMP**
+</div>
+
+<div class="verdict-card">
+
+### 💰 Meilleure Gratuite
+
+**GIMP**
+
 La seule alternative vraiment gratuite et open source qui rivalise avec Photoshop sur les fonctionnalités.
 
-### 🎨 Meilleure pour Artistes : **Krita**
+</div>
+
+<div class="verdict-card">
+
+### 🎨 Meilleure pour Artistes
+
+**Krita**
+
 Parfaite pour le dessin numérique avec des outils de peinture professionnels.
 
-### 🌐 Meilleure en Ligne : **Photopea**
+</div>
+
+<div class="verdict-card">
+
+### 🌐 Meilleure en Ligne
+
+**Photopea**
+
 Pour travailler n'importe où sans installation, avec une interface quasi-identique.
 
-### 🍎 Meilleure pour Mac : **Pixelmator Pro**
+</div>
+
+<div class="verdict-card">
+
+### 🍎 Meilleure pour Mac
+
+**Pixelmator Pro**
+
 L'expérience Mac parfaite avec des outils IA modernes.
+
+</div>
+
+</div>
 
 ## Tableau Comparatif Rapide
 

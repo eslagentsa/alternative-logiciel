@@ -210,20 +210,59 @@ alternatives:
 
 ## Notre Verdict
 
-### 🏆 Meilleure Alternative Complète : **ClickUp**
+<div class="verdict-grid">
+
+<div class="verdict-card">
+
+### 🏆 Meilleure Alternative Complète
+
+**ClickUp**
+
 Pour les équipes qui veulent remplacer Trello + Asana + Docs + Wiki en une seule plateforme.
 
-### 💰 Meilleure Gratuite : **Focalboard**
+</div>
+
+<div class="verdict-card">
+
+### 💰 Meilleure Gratuite
+
+**Focalboard**
+
 L'alternative open-source la plus aboutie, auto-hébergeable et gratuite.
 
-### 🎯 Meilleure pour le Kanban Pur : **MeisterTask**
+</div>
+
+<div class="verdict-card">
+
+### 🎯 Meilleure pour le Kanban Pur
+
+**MeisterTask**
+
 Interface la plus élégante et intuitive pour le Kanban pur.
 
-### 🏢 Meilleure pour Entreprises : **Asana**
+</div>
+
+<div class="verdict-card">
+
+### 🏢 Meilleure pour Entreprises
+
+**Asana**
+
 Pour les équipes structurées avec besoin de timeline et portfolios.
 
-### 🔒 Meilleure Auto-hébergée : **Wekan**
+</div>
+
+<div class="verdict-card">
+
+### 🔒 Meilleure Auto-hébergée
+
+**Wekan**
+
 Solution la plus stable et éprouvée pour auto-héberger son Kanban.
+
+</div>
+
+</div>
 
 ## Comparatif Rapide
 
