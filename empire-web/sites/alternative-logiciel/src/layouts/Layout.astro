@@ -1,0 +1,148 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import { SEO } from 'astro-seo';
+import Navbar from '@components/Navbar.astro';
+import Footer from '@components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = 'Alternative Logiciel - Les meilleures alternatives aux logiciels populaires',
+  description = 'Découvrez les meilleures alternatives aux logiciels populaires. Comparatifs détaillés, avis vérifiés et recommandations personnalisées pour trouver le logiciel parfait.',
+  image = '/images/og-default.jpg',
+  type = 'website',
+  noindex = false,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://alternative-logiciel.fr');
+const ogImage = new URL(image, Astro.site || 'https://alternative-logiciel.fr');
+---
+
+<!DOCTYPE html>
+<html lang="fr" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#7c3aed" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  
+  <!-- SEO -->
+  <SEO
+    title={title}
+    description={description}
+    canonical={canonicalURL.toString()}
+    noindex={noindex}
+    openGraph={{
+      basic: {
+        title,
+        type,
+        image: ogImage.toString(),
+        url: canonicalURL.toString(),
+      },
+      optional: {
+        description,
+        locale: 'fr_FR',
+        siteName: 'Alternative Logiciel',
+      },
+      image: {
+        url: ogImage.toString(),
+        secureUrl: ogImage.toString(),
+        type: 'image/jpeg',
+        width: 1200,
+        height: 630,
+        alt: title,
+      },
+    }}
+    twitter={{
+      card: 'summary_large_image',
+      site: '@alternativelogiciel',
+      creator: '@alternativelogiciel',
+      title,
+      description,
+      image: ogImage.toString(),
+      imageAlt: title,
+    }}
+    extend={{
+      meta: [
+        { name: 'author', content: 'Alternative Logiciel' },
+        { name: 'robots', content: noindex ? 'noindex, nofollow' : 'index, follow' },
+        { name: 'googlebot', content: noindex ? 'noindex, nofollow' : 'index, follow' },
+        { property: 'article:publisher', content: 'https://www.facebook.com/alternativelogiciel' },
+      ],
+      link: [
+        { rel: 'alternate', type: 'application/rss+xml', title: 'RSS Feed', href: '/rss.xml' },
+        { rel: 'sitemap', href: '/sitemap-index.xml' },
+      ],
+    }}
+  />
+  
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': type === 'article' ? 'Article' : 'WebSite',
+    name: 'Alternative Logiciel',
+    url: 'https://alternative-logiciel.fr',
+    description,
+    publisher: {
+      '@type': 'Organization',
+      name: 'Alternative Logiciel',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://alternative-logiciel.fr/logo.png',
+      },
+    },
+    ...(type === 'article' && {
+      headline: title,
+      image: ogImage.toString(),
+      datePublished: new Date().toISOString(),
+      dateModified: new Date().toISOString(),
+      author: {
+        '@type': 'Organization',
+        name: 'Alternative Logiciel',
+      },
+    }),
+  })} />
+  
+  <ViewTransitions />
+  
+  <script is:inline>
+    // Theme initialization - prevent flash
+    const theme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.classList.toggle('dark', theme === 'dark');
+  </script>
+</head>
+<body class="min-h-screen flex flex-col">
+  <Navbar />
+  <main class="flex-1" transition:animate="fade">
+    <slot />
+  </main>
+  <Footer />
+  
+  <script>
+    // Theme toggle functionality
+    const themeToggle = document.querySelector('[data-theme-toggle]');
+    const html = document.documentElement;
+    
+    themeToggle?.addEventListener('click', () => {
+      const isDark = html.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

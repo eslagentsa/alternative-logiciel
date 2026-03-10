@@ -1,0 +1,47 @@
+# Configuration du pipeline de contenu
+# Empire Web - Alternative Logiciel
+
+content_pipeline:
+  # Sources de données
+  sources:
+    keywords:
+      - ahrefs_api
+      - google_trends
+      - ubersuggest
+    
+  # Modèles utilisés
+  models:
+    tier_0: "meta-llama/llama-3.3-70b-instruct:free"
+    tier_1: "google/gemini-2.0-flash-001"
+    tier_2: "deepseek/deepseek-chat-v3"
+    tier_3: "anthropic/claude-3.7-sonnet"
+  
+  # Paramètres de génération
+  generation:
+    articles_per_day: 3
+    word_count_min: 1500
+    word_count_max: 3000
+    include_images: true
+    include_comparison_tables: true
+    
+  # SEO
+  seo:
+    generate_meta_descriptions: true
+    generate_structured_data: true
+    auto_internal_linking: true
+    image_alt_text: true
+    
+  # Publication
+  publishing:
+    schedule: "daily_10am"
+    auto_deploy: true
+    review_required: false
+    
+  # Monétisation
+  monetization:
+    adsense_auto_ads: true
+    affiliate_links:
+      - program: "notion"
+        url: "https://affiliate.notion.so/..."
+      - program: "figma"
+        url: "https://..."

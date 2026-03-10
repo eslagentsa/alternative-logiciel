@@ -1,0 +1,79 @@
+# Liens d'Affiliation
+# Empire Web - Alternative Logiciel
+# Email: esl.agentsa@gmail.com
+
+# Notion
+notion:
+  name: "Notion"
+  program_url: "https://www.notion.so/affiliates"
+  tracking_url: "https://www.notion.so/?r=[REF_CODE]"
+  commission: "50% recurrent"
+  cookie_duration: "90 jours"
+  status: "pending_signup"
+  notes: "Programme d'affiliation généreux, populaire"
+
+# Figma
+figma:
+  name: "Figma"
+  program_url: "https://www.figma.com/affiliates"
+  tracking_url: "https://www.figma.com/?ref=[REF_CODE]"
+  commission: "30% première année"
+  cookie_duration: "60 jours"
+  status: "pending_signup"
+  notes: "Excellent pour designers"
+
+# Linear
+linear:
+  name: "Linear"
+  program_url: "https://linear.app/affiliates"
+  tracking_url: "https://linear.app/?via=[REF_CODE]"
+  commission: "25%"
+  cookie_duration: "30 jours"
+  status: "pending_signup"
+  notes: "Outil gestion projet tech"
+
+# ClickUp
+clickup:
+  name: "ClickUp"
+  program_url: "https://clickup.com/affiliates"
+  tracking_url: "https://clickup.com/?fp_ref=[REF_CODE]"
+  commission: "20% recurrent"
+  cookie_duration: "90 jours"
+  status: "pending_signup"
+  notes: "Alternative Notion/Trello"
+
+# Monday.com
+monday:
+  name: "Monday.com"
+  program_url: "https://monday.com/affiliates"
+  tracking_url: "https://monday.com/?ref=[REF_CODE]"
+  commission: "25%"
+  cookie_duration: "90 jours"
+  status: "pending_signup"
+  notes: "Outil gestion projet entreprise"
+
+# Todoist
+todoist:
+  name: "Todoist"
+  program_url: "https://todoist.com/affiliates"
+  tracking_url: "https://todoist.com/?ref=[REF_CODE]"
+  commission: "25%"
+  cookie_duration: "90 jours"
+  status: "pending_signup"
+  notes: "Task manager populaire"
+
+# Asana
+asana:
+  name: "Asana"
+  program_url: "https://asana.com/affiliates"
+  tracking_url: "https://asana.com/?ref=[REF_CODE]"
+  commission: "Variable"
+  cookie_duration: "90 jours"
+  status: "pending_research"
+  notes: "À vérifier disponibilité"
+
+# Instructions:
+# 1. S'inscrire à chaque programme d'affiliation
+# 2. Remplacer [REF_CODE] par le code réel
+# 3. Tester chaque lien avant publication
+# 4. Ajouter disclaimer légale sur le site

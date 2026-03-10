@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import ComparisonCard from '../components/ComparisonCard.astro';
+import CategoryCard from '../components/CategoryCard.astro';
+import { categories } from '../data/categories';
+
+const featuredComparisons = [
+  {
+    title: "Top 10 Alternatives à Notion",
+    description: "Découvrez les meilleurs outils pour remplacer Notion en 2026.",
+    slug: "top-10-alternatives-notion",
+    category: "Productivité",
+    rating: 4.8
+  },
+  {
+    title: "Meilleures Alternatives à Trello",
+    description: "Comparez les 10 meilleures alternatives à Trello.",
+    slug: "meilleures-alternatives-trello",
+    category: "Gestion de Projet",
+    rating: 4.7
+  }
+];
+---
+
+<Layout title="Alternative Logiciel - Trouvez le Meilleur Outil">
+  <Hero 
+    title="Trouvez l'Alternative Parfaite"
+    subtitle="Comparez les meilleurs outils digitaux et trouvez celui qui correspond à vos besoins."
+  />
+
+  <section class="py-20 px-4">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12">Comparatifs Populaires</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {featuredComparisons.map(c => <ComparisonCard {...c} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 px-4 bg-slate-900/50">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12">Catégories</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {categories.map(c => <CategoryCard {...c} />)}
+      </div>
+    </div>
+  </section>
+</Layout>

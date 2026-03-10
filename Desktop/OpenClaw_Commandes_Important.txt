@@ -1,0 +1,125 @@
+================================================================================
+                    OPENCLAW - COMMANDES IMPORTANTES
+================================================================================
+Fichier de secours au cas où Clawdy serait indisponible
+Dernière mise à jour : 2026-03-09
+================================================================================
+
+--- STATUS & DIAGNOSTICS -------------------------------------------------------
+
+openclaw status              : Affiche le statut de la passerelle et des canaux
+openclaw status --all        : Statut complet avec infos de partage
+openclaw status --deep       : Test approfondi des canaux de communication
+openclaw logs --follow       : Affiche les logs en temps réel
+
+openclaw gateway start       : Démarre la passerelle OpenClaw
+openclaw gateway stop        : Arrête la passerelle
+openclaw gateway restart     : Redémarre la passerelle
+openclaw gateway status      : Vérifie si la passerelle tourne
+
+
+--- GESTION DES CANAUX ---------------------------------------------------------
+
+openclaw channels list       : Liste les canaux configurés
+openclaw channels add        : Ajoute un nouveau canal (Telegram, WhatsApp, etc.)
+openclaw channels remove     : Supprime un canal
+
+# Telegram spécifique
+openclaw telegram link       : Lier un compte Telegram personnel (QR code)
+openclaw telegram bot        : Configurer un bot Telegram via BotFather
+
+
+--- SESSIONS & AGENTS ----------------------------------------------------------
+
+openclaw sessions list       : Liste les sessions actives
+openclaw sessions kill <id>  : Termine une session spécifique
+
+openclaw subagents list      : Liste les sous-agents en cours
+openclaw subagents kill <id> : Tue un sous-agent
+
+
+--- CRON & RAPPELS -------------------------------------------------------------
+
+openclaw cron list           : Liste les tâches planifiées
+openclaw cron add            : Ajoute une tâche planifiée
+openclaw cron remove <id>    : Supprime une tâche
+
+# Exemple de rappel dans 30 minutes
+openclaw cron add --name "rappel-reunion" --schedule "in 30 minutes" \
+  --payload "Rappel : Tu as une réunion maintenant!"
+
+
+--- FICHIERS IMPORTANTS --------------------------------------------------------
+
+C:\Users\AgentSA\.openclaw\workspace\
+  ├── SOUL.md              : Personnalité de Clawdy
+  ├── USER.md              : Informations sur toi (Sam)
+  ├── MEMORY.md            : Mémoire long terme
+  ├── memory\YYYY-MM-DD.md : Notes journalières
+  ├── TOOLS.md             : Notes sur les outils locaux
+  └── HEARTBEAT.md         : Tâches à vérifier périodiquement
+
+C:\Users\AgentSA\.openclaw\
+  ├── scripts\             : Scripts de démarrage/auto
+  └── logs\                : Fichiers de logs
+
+
+--- REDÉMARRAGE MANUEL ---------------------------------------------------------
+
+Si Clawdy ne répond plus :
+
+1. Vérifier si la passerelle tourne :
+   openclaw status
+
+2. Si arrêtée, la redémarrer :
+   openclaw gateway start
+
+3. Ou via le raccourci startup :
+   C:\Users\AgentSA\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\OpenClaw-Startup.bat
+
+4. Alternative - Lancer manuellement :
+   openclaw gateway start
+
+
+--- COMMANDES POWERHELL UTILES -------------------------------------------------
+
+# Vérifier les processus Node.js (OpenClaw tourne sur Node)
+Get-Process | Where-Object {$_.ProcessName -like "*node*"}
+
+# Voir les logs récents
+Get-Content $env:USERPROFILE\.openclaw\logs\openclaw-gateway.log -Tail 50
+
+# Redémarrer la tâche planifiée (si configurée)
+Restart-ScheduledTask -TaskName "OpenClaw-AutoStart"
+
+# Voir le statut de la tâche planifiée
+Get-ScheduledTask -TaskName "OpenClaw-AutoStart" | Get-ScheduledTaskInfo
+
+
+--- SAUVEGARDE & RESTAURATION --------------------------------------------------
+
+# Backup de la mémoire et config
+Copy-Item -Path "$env:USERPROFILE\.openclaw\workspace\*" -Destination "D:\Backup\OpenClaw\" -Recurse -Force
+
+# Backup des skills installés
+Copy-Item -Path "$env:APPDATA\npm\node_modules\openclaw\skills\" -Destination "D:\Backup\OpenClaw\skills\" -Recurse -Force
+
+
+--- CONTACT & SUPPORT ----------------------------------------------------------
+
+Documentation : https://docs.openclaw.ai
+GitHub        : https://github.com/openclaw/openclaw
+ClawHub       : https://clawhub.com (skills communautaires)
+Discord       : https://discord.com/invite/clawd
+
+================================================================================
+                          BESOIN D'AIDE ?
+================================================================================
+
+Si Clawdy est complètement hors ligne :
+1. Vérifie ta connexion internet
+2. Redémarre la passerelle : openclaw gateway restart
+3. Consulte les logs : openclaw logs --follow
+4. En dernier recours : redémarre le PC (la tâche planifiée relancera tout)
+
+================================================================================

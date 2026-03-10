@@ -1,0 +1,83 @@
+{
+  "id": "brief-002",
+  "keyword": "alternative trello",
+  "title": "10 Meilleures Alternatives à Trello en 2026 (Gratuites et Payantes)",
+  "slug": "meilleures-alternatives-trello",
+  "category": "productivity",
+  "priority": "high",
+  "word_count": 2200,
+  "target_audience": "Équipes agiles, freelances, gestionnaires de projet",
+  "search_intent": "comparative",
+  "structure": {
+    "introduction": {
+      "type": "h2",
+      "words": 150,
+      "content": "Limitations Trello (trop simple pour gros projets)"
+    },
+    "why_alternative": {
+      "type": "h2",
+      "words": 200,
+      "content": "Besoin de Gantt, reporting, automations"
+    },
+    "criteria": {
+      "type": "h2",
+      "words": 150,
+      "content": "Kanban vs Gantt vs Listes, prix, intégrations"
+    },
+    "alternatives": {
+      "type": "h2",
+      "subsections": [
+        {"rank": 1, "tool": "Monday.com", "words": 250, "focus": "Visuel, flexible"},
+        {"rank": 2, "tool": "Asana", "words": 250, "focus": "Gratuit généreux"},
+        {"rank": 3, "tool": "ClickUp", "words": 250, "focus": "All-in-one"},
+        {"rank": 4, "tool": "Notion", "words": 200, "focus": "Docs + projets"},
+        {"rank": 5, "tool": "Linear", "words": 200, "focus": "Dev teams"},
+        {"rank": 6, "tool": "Jira", "words": 200, "focus": "Enterprise agile"},
+        {"rank": 7, "tool": "MeisterTask", "words": 150, "focus": "Mind maps"},
+        {"rank": 8, "tool": "Airtable", "words": 200, "focus": "Database-powered"},
+        {"rank": 9, "tool": "Microsoft Planner", "words": 150, "focus": "Écosystème MS"},
+        {"rank": 10, "tool": "Wrike", "words": 150, "focus": "Gantt avancé"}
+      ]
+    },
+    "comparison_table": {
+      "type": "h2",
+      "words": 100,
+      "content": "Gratuit vs Payant - tableau détaillé"
+    },
+    "recommendation": {
+      "type": "h2",
+      "words": 200,
+      "content": "Selon taille équipe et budget"
+    },
+    "faq": {
+      "type": "h2",
+      "words": 200,
+      "questions": [
+        "Quelle alternative Trello gratuite ?",
+        "Comment migrer depuis Trello ?",
+        "Meilleur outil pour équipe agile ?"
+      ]
+    },
+    "conclusion": {
+      "type": "h2",
+      "words": 150,
+      "content": "Résumé + CTA"
+    }
+  },
+  "lsi_keywords": [
+    "gestion de projet kanban",
+    "outil gestion tâches",
+    "tableau agile",
+    "workflow",
+    "équipe distante"
+  ],
+  "competitors": [
+    "https://zapier.com/blog/best-trello-alternatives/",
+    "https://asana.com/fr/guide/help/premium/portfolios"
+  ],
+  "internal_links": [
+    "alternative notion",
+    "meilleur outil gestion projet"
+  ],
+  "cta": "Testez Monday.com avec 14 jours gratuits"
+}

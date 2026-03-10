@@ -1,0 +1,75 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import ComparisonCard from '../../components/ComparisonCard.astro';
+import { categories } from '../../data/categories';
+
+export async function getStaticPaths() {
+  return categories.map(category => ({
+    params: { slug: category.slug },
+    props: { category },
+  }));
+}
+
+const { category } = Astro.props;
+const { slug } = Astro.params;
+
+// Get comparisons for this category
+const allComparisons = await getCollection('comparisons');
+const categoryComparisons = allComparisons.filter(
+  c => c.data.category === category.name
+);
+
+const seo = {
+  title: `${category.name} - Alternatives Logiciels`,
+  description: `Découvrez les meilleures alternatives dans la catégorie ${category.name.toLowerCase()}. Comparatifs détaillés et avis d'experts.`
+};
+---
+
+<Layout {...seo}>
+  <div class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <!-- Category Header -->
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-violet-500 to-blue-500 rounded-2xl mb-6">
+          <span class="text-4xl">{category.icon}</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-violet-400 to-blue-400 bg-clip-text text-transparent mb-4">
+          Alternatives {category.name}
+        </h1>
+        <p class="text-slate-400 text-lg max-w-2xl mx-auto">
+          {category.description}
+        </p>
+      </div>
+
+      {/* Comparisons Grid */}
+      {categoryComparisons.length > 0 ? (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {categoryComparisons.map(comparison => (
+            <ComparisonCard 
+              title={comparison.data.title}
+              description={comparison.data.description}
+              slug={comparison.slug}
+              category={comparison.data.category}
+              rating={comparison.data.rating}
+              image={comparison.data.image}
+            />
+          ))}
+        </div>
+      ) : (
+        <div class="glass-card p-12 rounded-2xl text-center">
+          <div class="w-16 h-16 bg-slate-800 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-2">Comparatifs en préparation</h3>
+          <p class="text-slate-400">
+            Nous travaillons sur de nouveaux comparatifs pour cette catégorie. 
+            Revenez bientôt ou abonnez-vous à notre newsletter pour être informé.
+          </p>
+        </div>
+      )}
+    </div>
+  </div>
+</Layout>

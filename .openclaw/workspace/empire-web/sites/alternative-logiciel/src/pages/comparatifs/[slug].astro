@@ -1,0 +1,83 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const comparisons = await getCollection('comparisons');
+  return comparisons.map(comparison => ({
+    params: { slug: comparison.slug },
+    props: { comparison },
+  }));
+}
+
+const { comparison } = Astro.props;
+const { Content } = await comparison.render();
+
+const seo = {
+  title: comparison.data.title,
+  description: comparison.data.description,
+  keywords: comparison.data.keywords?.join(', ')
+};
+---
+
+<Layout {...seo}>
+  <article class="py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      {/* Article Header */}
+      <header class="mb-12">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="px-3 py-1 bg-violet-500/20 text-violet-300 rounded-full text-sm font-medium">
+            {comparison.data.category}
+          </span>
+          <span class="text-slate-500">•</span>
+          <span class="text-slate-400 text-sm">{comparison.data.readTime} min de lecture</span>
+          {comparison.data.rating && (
+            <>
+              <span class="text-slate-500">•</span>
+              <span class="text-yellow-400 text-sm">★ {comparison.data.rating}/5</span>
+            </>
+          )}
+        </div>
+        <h1 class="text-3xl md:text-5xl font-bold text-white mb-6 leading-tight">
+          {comparison.data.title}
+        </h1>
+        <p class="text-xl text-slate-400 leading-relaxed">
+          {comparison.data.description}
+        </p>
+        <div class="flex items-center gap-4 mt-6 pt-6 border-t border-slate-800">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-gradient-to-br from-violet-500 to-blue-500 rounded-full flex items-center justify-center text-white font-semibold">
+              AL
+            </div>
+            <div>
+              <div class="text-white font-medium">L'équipe Alternative Logiciel</div>
+              <div class="text-slate-500 text-sm">Mis à jour le {comparison.data.updatedDate || comparison.data.publishDate}</div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Article Content */}
+      <div class="prose prose-invert prose-lg max-w-none">
+        <Content />
+      </div>
+
+      {/* CTA Section */}
+      <div class="mt-16 p-8 glass-card rounded-2xl">
+        <h3 class="text-2xl font-bold text-white mb-4">Trouvez votre alternative idéale</h3>
+        <p class="text-slate-400 mb-6">
+          Explorez nos autres comparatifs pour découvrir l'outil parfait pour vos besoins.
+        </p>
+        <a 
+          href="/" 
+          class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-violet-600 to-blue-600 rounded-lg font-semibold text-white hover:opacity-90 transition-opacity"
+        >
+          Voir tous les comparatifs
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </article>
+</Layout>

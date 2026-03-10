@@ -1,0 +1,19 @@
+Windows Registry Editor Version 5.00
+
+; OpenClaw Auto-Start Task - Registry Import
+; Execute as Administrator to register the scheduled task
+
+[HKEY_CURRENT_USER\Software\OpenClaw]
+"InstallDate"="2026-03-09"
+"Version"="2026.3.7"
+
+; Note: Registry cannot directly create scheduled tasks.
+; Use the following PowerShell command as Administrator instead:
+; 
+; $TaskName = "OpenClaw-AutoStart"
+; $ScriptPath = "$env:USERPROFILE\.openclaw\scripts\start-openclaw.ps1"
+; Unregister-ScheduledTask -TaskName $TaskName -Confirm:$false -ErrorAction SilentlyContinue
+; $Trigger = New-ScheduledTaskTrigger -AtLogon
+; $Action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-ExecutionPolicy Bypass -WindowStyle Hidden -File `"$ScriptPath`""
+; $Settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable -RestartCount 3 -RestartInterval (New-TimeSpan -Minutes 1)
+; Register-ScheduledTask -TaskName $TaskName -Trigger $Trigger -Action $Action -Settings $Settings -RunLevel Highest -Force

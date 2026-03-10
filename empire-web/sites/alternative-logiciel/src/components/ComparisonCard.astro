@@ -1,0 +1,149 @@
+---
+import { Star, ExternalLink, Check, X } from 'lucide-react';
+
+interface Alternative {
+  name: string;
+  description: string;
+  price: string;
+  rating: number;
+  openSource?: boolean;
+  pros?: string[];
+  cons?: string[];
+}
+
+interface Props {
+  title: string;
+  description: string;
+  mainSoftware: {
+    name: string;
+    description: string;
+    price: string;
+    rating: number;
+  };
+  alternatives: Alternative[];
+  category: string;
+  categorySlug: string;
+  slug: string;
+  featured?: boolean;
+}
+
+const { 
+  title, 
+  description, 
+  mainSoftware, 
+  alternatives, 
+  category, 
+  categorySlug, 
+  slug,
+  featured = false 
+} = Astro.props;
+
+const bestAlternative = alternatives.reduce((best, current) => 
+  current.rating > best.rating ? current : best
+);
+---
+
+<article class:list={[
+  "glass-card card-shine overflow-hidden group",
+  featured && "lg:col-span-2 lg:row-span-2"
+]}>
+  <a href={`/comparatifs/${slug}`} class="block p-6 lg:p-8 h-full">
+    <!-- Header -->
+    <div class="flex items-start justify-between mb-6">
+      <div>
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-primary-500/10 text-primary-400 mb-3">
+          {category}
+        </span>
+        <h3 class:list={[
+          "font-bold text-[var(--color-text-primary)] group-hover:text-primary-400 transition-colors duration-300",
+          featured ? "text-2xl lg:text-3xl" : "text-xl"
+        ]}>
+          {title}
+        </h3>
+      </div>
+      <div class="flex items-center space-x-1 text-yellow-400">
+        <Star size={16} fill="currentColor" />
+        <span class="text-sm font-medium text-[var(--color-text-primary)]">{mainSoftware.rating}</span>
+      </div>
+    </div>
+    
+    <!-- Description -->
+    <p class:list={[
+      "text-[var(--color-text-secondary)] mb-6",
+      featured ? "text-base lg:text-lg" : "text-sm line-clamp-2"
+    ]}>
+      {description}
+    </p>
+    
+    <!-- Main Software -->
+    <div class="mb-6 p-4 bg-[var(--color-bg-tertiary)] rounded-xl">
+      <p class="text-xs text-[var(--color-text-muted)] uppercase tracking-wider mb-2">Logiciel principal</p>
+      <div class="flex items-center justify-between">
+        <div>
+          <p class="font-semibold text-[var(--color-text-primary)]">{mainSoftware.name}</p>
+          <p class="text-sm text-[var(--color-text-muted)]">{mainSoftware.price}</p>
+        </div>
+        <span class="text-2xl font-bold text-[var(--color-text-muted)]">VS</span>
+      </div>
+    </div>
+    
+    <!-- Best Alternative Preview -->
+    <div class="mb-6">
+      <p class="text-xs text-[var(--color-text-muted)] uppercase tracking-wider mb-3">Meilleure alternative</p>
+      <div class="flex items-center space-x-4">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center">
+          <span class="text-xl font-bold text-green-400">{bestAlternative.name.charAt(0)}</span>
+        </div>
+        <div class="flex-1">
+          <p class="font-semibold text-[var(--color-text-primary)]">{bestAlternative.name}</p>
+          <div class="flex items-center space-x-2 text-sm">
+            <span class="text-[var(--color-text-secondary)]">{bestAlternative.price}</span>
+            {bestAlternative.openSource && (
+              <span class="px-2 py-0.5 rounded-full text-xs bg-green-500/10 text-green-400">
+                Open Source
+              </span>
+            )}
+          </div>
+        </div>
+        <div class="flex items-center space-x-1">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <Star
+              size={14}
+              class={i < Math.floor(bestAlternative.rating) ? 'text-yellow-400 fill-current' : 'text-[var(--color-border)]'}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+    
+    <!-- Quick Pros/Cons -->
+    <div class:list={["grid gap-4", featured ? "sm:grid-cols-2" : ""]}>
+      {bestAlternative.pros && bestAlternative.pros.slice(0, 2).map((pro) => (
+        <div class="flex items-start space-x-2">
+          <Check size={16} class="text-green-400 mt-0.5 flex-shrink-0" />
+          <span class="text-sm text-[var(--color-text-secondary)]">{pro}</span>
+        </div>
+      ))}
+    </div>
+    
+    <!-- Footer -->
+    <div class="mt-6 pt-6 border-t border-[var(--color-border)] flex items-center justify-between">
+      <span class="text-sm text-[var(--color-text-muted)]">
+        {alternatives.length} alternative{alternatives.length > 1 ? 's' : ''}
+      </span>
+      <span class="inline-flex items-center text-sm font-medium text-primary-400 group-hover:text-primary-300 transition-colors duration-300">
+        Voir le comparatif
+        <ExternalLink size={16} class="ml-2 transform group-hover:translate-x-1 transition-transform duration-300" />
+      </span>
+    </div>
+  </a>
+</article>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
