@@ -1,0 +1,97 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: string;
+  publishDate?: Date;
+  modifiedDate?: Date;
+  author?: string;
+  category?: string;
+  rating?: number;
+  reviewCount?: number;
+}
+
+const { 
+  title, 
+  description, 
+  image = '/images/og-default.jpg',
+  type = 'website',
+  publishDate,
+  modifiedDate,
+  author = 'Équipe Alternative Logiciel',
+  category,
+  rating,
+  reviewCount
+} = Astro.props;
+
+const siteUrl = 'https://alternative-logiciel.pages.dev';
+const fullImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
+---
+
+{/* Meta tags standard */}
+<meta name="description" content={description} />
+<meta name="author" content={author} />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href={Astro.url.href} />
+
+{/* Open Graph / Facebook */}
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={fullImageUrl} />
+<meta property="og:url" content={Astro.url.href} />
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content="Alternative Logiciel" />
+<meta property="og:locale" content="fr_FR" />
+
+{/* Twitter Card */}
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={fullImageUrl} />
+
+{/* JSON-LD Schema.org */}
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": type === 'article' ? 'BlogPosting' : 'WebPage',
+  "headline": title,
+  "description": description,
+  "url": Astro.url.href,
+  "image": fullImageUrl,
+  "author": {
+    "@type": "Organization",
+    "name": author,
+    "url": siteUrl
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Alternative Logiciel",
+    "url": siteUrl,
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteUrl}/favicon.svg`
+    }
+  },
+  ...(publishDate && { "datePublished": publishDate.toISOString() }),
+  ...(modifiedDate && { "dateModified": modifiedDate.toISOString() }),
+  ...(category && { "articleSection": category }),
+  ...(rating && reviewCount && {
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": rating,
+      "reviewCount": reviewCount
+    }
+  })
+})} />
+
+{/* Article Schema for comparisons */}
+{type === 'article' && (
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Comparison",
+    "name": title,
+    "description": description,
+    "url": Astro.url.href,
+    "subjectOf": category
+  })} />
+)}
