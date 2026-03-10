@@ -1,0 +1,181 @@
+---
+import { categories } from '../data/categories';
+import { 
+  Github, 
+  Twitter, 
+  Linkedin, 
+  Mail,
+  ArrowRight,
+  Heart
+} from 'lucide-react';
+
+const footerLinks = {
+  navigation: [
+    { label: 'Accueil', href: '/' },
+    { label: 'Catégories', href: '/categories' },
+    { label: 'Comparatifs', href: '/comparatifs' },
+    { label: 'À propos', href: '/about' },
+    { label: 'Contact', href: '/contact' },
+  ],
+  legal: [
+    { label: 'Mentions légales', href: '/legal/mentions-legales' },
+    { label: 'Politique de confidentialité', href: '/legal/politique-confidentialite' },
+    { label: 'CGU', href: '/legal/cgu' },
+  ],
+};
+
+const socialLinks = [
+  { icon: Twitter, href: 'https://twitter.com/alternativelogiciel', label: 'Twitter' },
+  { icon: Linkedin, href: 'https://linkedin.com/company/alternative-logiciel', label: 'LinkedIn' },
+  { icon: Github, href: 'https://github.com/alternative-logiciel', label: 'GitHub' },
+];
+---
+
+<footer class="relative mt-20 overflow-hidden">
+  <!-- Background decoration -->
+  <div class="absolute inset-0 gradient-bg opacity-5 pointer-events-none" />
+  <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl pointer-events-none" />
+  <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-accent-500/10 rounded-full blur-3xl pointer-events-none" />
+  
+  <div class="relative border-t border-[var(--color-border)] bg-[var(--color-bg-secondary)]/50 backdrop-blur-xl">
+    <!-- Newsletter Section -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-b border-[var(--color-border)]">
+      <div class="glass rounded-3xl p-8 lg:p-12 overflow-hidden relative">
+        <div class="absolute inset-0 gradient-bg opacity-10" />
+        <div class="relative grid lg:grid-cols-2 gap-8 items-center">
+          <div>
+            <h3 class="text-2xl lg:text-3xl font-bold text-[var(--color-text-primary)] mb-4">
+              Restez informé des <span class="gradient-text">nouveaux comparatifs</span>
+            </h3>
+            <p class="text-[var(--color-text-secondary)] text-lg">
+              Recevez chaque semaine les meilleures alternatives logicielles directement dans votre boîte mail.
+            </p>
+          </div>
+          
+          <form class="flex flex-col sm:flex-row gap-4" action="/api/newsletter" method="POST">
+            <div class="flex-1 relative">
+              <Mail class="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--color-text-muted)]" size={20} />
+              <input
+                type="email"
+                name="email"
+                placeholder="votre@email.com"
+                required
+                class="w-full pl-12 pr-4 py-4 bg-[var(--color-bg-primary)] border border-[var(--color-border)] rounded-xl text-[var(--color-text-primary)] placeholder:text-[var(--color-text-muted)] focus:outline-none focus:ring-2 focus:ring-primary-500/50 transition-all duration-300"
+              />
+            </div>
+            <button
+              type="submit"
+              class="btn-primary flex items-center justify-center space-x-2 whitespace-nowrap"
+            >
+              <span>S'inscrire</span>
+              <ArrowRight size={18} />
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Main Footer Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 lg:gap-12">
+        <!-- Brand -->
+        <div class="col-span-2 lg:col-span-2">
+          <a href="/" class="flex items-center space-x-3 mb-6">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center">
+              <span class="text-white font-bold text-xl">AL</span>
+            </div>
+            <span class="font-bold text-xl gradient-text">Alternative Logiciel</span>
+          </a>
+          <p class="text-[var(--color-text-secondary)] mb-6 max-w-sm">
+            Votre guide complet pour trouver les meilleures alternatives aux logiciels populaires. Comparatifs objectifs et avis vérifiés.
+          </p>
+          <div class="flex space-x-4">
+            {socialLinks.map(({ icon: Icon, href, label }) => (
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                class="w-10 h-10 rounded-xl bg-[var(--color-bg-tertiary)] flex items-center justify-center text-[var(--color-text-secondary)] hover:text-primary-400 hover:bg-primary-500/10 transition-all duration-300"
+              >
+                <Icon size={20} />
+              </a>
+            ))}
+          </div>
+        </div>
+        
+        <!-- Navigation -->
+        <div>
+          <h4 class="font-semibold text-[var(--color-text-primary)] mb-4">Navigation</h4>
+          <ul class="space-y-3">
+            {footerLinks.navigation.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-[var(--color-text-secondary)] hover:text-primary-400 transition-colors duration-200"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        <!-- Categories -->
+        <div>
+          <h4 class="font-semibold text-[var(--color-text-primary)] mb-4">Catégories</h4>
+          <ul class="space-y-3">
+            {categories.slice(0, 5).map((cat) => (
+              <li>
+                <a
+                  href={`/categories/${cat.slug}`}
+                  class="text-[var(--color-text-secondary)] hover:text-primary-400 transition-colors duration-200"
+                >
+                  {cat.name}
+                </a>
+              </li>
+            ))}
+            <li>
+              <a href="/categories" class="text-primary-400 hover:text-primary-300 transition-colors duration-200">
+                Voir tout →
+              </a>
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Legal -->
+        <div>
+          <h4 class="font-semibold text-[var(--color-text-primary)] mb-4">Légal</h4>
+          <ul class="space-y-3">
+            {footerLinks.legal.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-[var(--color-text-secondary)] hover:text-primary-400 transition-colors duration-200"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Bottom Bar -->
+    <div class="border-t border-[var(--color-border)]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="flex flex-col sm:flex-row items-center justify-between space-y-4 sm:space-y-0">
+          <p class="text-sm text-[var(--color-text-muted)] text-center sm:text-left">
+            © {new Date().getFullYear()} Alternative Logiciel. Tous droits réservés.
+          </p>
+          <p class="text-sm text-[var(--color-text-muted)] flex items-center space-x-1">
+            <span>Fait avec</span>
+            <Heart size={14} class="text-red-500 fill-current" />
+            <span>en France</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
